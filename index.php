@@ -55,6 +55,12 @@
             box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
         }
 
+        .logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
         .logo-text h1 {
             font-size: 32px;
             color: #FF6B35;
@@ -778,18 +784,21 @@
             display: block;
         }
     </style>
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
     <div class="phone-frame">
         <!-- Sign In Screen -->
         <div id="signinScreen" class="auth-screen active">
-            <div class="logo-section">
-                <div class="logo-icon">🍞</div>
-                <div class="logo-text">
-                    <h1>DoughMain</h1>
-                    <p>Turning yesterday's bread into tomorrow's hope</p>
-                </div>
-            </div>
+    <div class="logo-section">
+        <div class="logo-icon" style="background: transparent; box-shadow: none;">
+            <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;"> 
+        </div>
+        <div class="logo-text">
+            <h1>DoughMain</h1>
+            <p>Turning yesterday's bread into tomorrow's hope</p>
+        </div>
+    </div>
             
             <div class="error-message" id="loginError"></div>
             <div class="success-message" id="loginSuccess"></div>
@@ -815,10 +824,12 @@
 
         <!-- Sign Up Screen -->
         <div id="signupScreen" class="auth-screen">
-            <div class="logo-section">
-                <div class="logo-icon">🍞</div>
-                <div class="logo-text">
-                    <h1>Create Account</h1>
+    <div class="logo-section">
+        <div class="logo-icon" style="background: transparent; box-shadow: none;">
+            <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;">
+        </div>
+        <div class="logo-text">
+            <h1>Create Account</h1>
                     <p>Join us in reducing food waste</p>
                 </div>
             </div>
@@ -943,7 +954,7 @@
             <span class="menu-arrow">›</span>
         </div>
         
-        <div class="menu-item" onclick="showProfileSection('addresses')">  ← ADD THIS ✅
+        <div class="menu-item" onclick="showProfileSection('addresses')">  
             <div class="menu-item-left">
                 <span class="menu-icon">📍</span>
                 <span class="menu-text">Addresses</span>
@@ -951,7 +962,7 @@
             <span class="menu-arrow">›</span>
         </div>
         
-        <div class="menu-item" onclick="showProfileSection('payment')">  ← ADD THIS ✅
+        <div class="menu-item" onclick="showProfileSection('payment')">  
             <div class="menu-item-left">
                 <span class="menu-icon">💳</span>
                 <span class="menu-text">Payment Methods</span>
@@ -959,7 +970,7 @@
             <span class="menu-arrow">›</span>
         </div>
         
-        <div class="menu-item" onclick="showProfileSection('settings')">  ← ADD THIS ✅
+        <div class="menu-item" onclick="showProfileSection('settings')">  
             <div class="menu-item-left">
                 <span class="menu-icon">⚙️</span>
                 <span class="menu-text">Settings</span>
@@ -1244,5 +1255,6 @@
 
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
