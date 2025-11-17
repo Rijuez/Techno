@@ -48,8 +48,8 @@ class AuthController {
                     return;
                 }
                 
-                // Verify password
-                if (password_verify($password, $user['password'])) {
+                // Verify password (plain text comparison)
+                if ($password === $user['password']) {
                     // Remove password from response
                     unset($user['password']);
                     
@@ -128,8 +128,8 @@ class AuthController {
                 return;
             }
             
-            // Hash password
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            // Store password in plain text (NOT RECOMMENDED FOR PRODUCTION)
+            $plainPassword = $password;
             
             // Insert new user
             $query = "INSERT INTO users (name, email, password, address, contact_number) 
@@ -137,7 +137,7 @@ class AuthController {
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':password', $plainPassword);
             $stmt->bindParam(':address', $address);
             $stmt->bindParam(':contact', $contact);
             

@@ -926,50 +926,228 @@
                 </div>
             </div>
 
-            <!-- Profile Tab -->
-            <div id="profileTab" class="tab-content">
-                <div class="profile-header">
-                    <div class="profile-avatar">👤</div>
-                    <div class="profile-name" id="profileName">User Name</div>
-                    <div class="profile-email" id="profileEmail">user@email.com</div>
-                </div>
-                
-                <div class="profile-menu">
-                    <div class="menu-item" onclick="viewOrders()">
-                        <div class="menu-item-left">
-                            <span class="menu-icon">📋</span>
-                            <span class="menu-text">Order History</span>
-                        </div>
-                        <span class="menu-arrow">›</span>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="menu-item-left">
-                            <span class="menu-icon">📍</span>
-                            <span class="menu-text">Addresses</span>
-                        </div>
-                        <span class="menu-arrow">›</span>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="menu-item-left">
-                            <span class="menu-icon">💳</span>
-                            <span class="menu-text">Payment Methods</span>
-                        </div>
-                        <span class="menu-arrow">›</span>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="menu-item-left">
-                            <span class="menu-icon">⚙️</span>
-                            <span class="menu-text">Settings</span>
-                        </div>
-                        <span class="menu-arrow">›</span>
-                    </div>
-                </div>
-                
-                <button class="logout-btn" onclick="logout()">Sign Out</button>
+           <!-- Profile Tab -->
+<div id="profileTab" class="tab-content">
+    <div class="profile-header">
+        <div class="profile-avatar">👤</div>
+        <div class="profile-name" id="profileName">User Name</div>
+        <div class="profile-email" id="profileEmail">user@email.com</div>
+    </div>
+    
+    <div class="profile-menu">
+        <div class="menu-item" onclick="viewOrders()">
+            <div class="menu-item-left">
+                <span class="menu-icon">📋</span>
+                <span class="menu-text">Order History</span>
             </div>
+            <span class="menu-arrow">›</span>
+        </div>
+        
+        <div class="menu-item" onclick="showProfileSection('addresses')">  ← ADD THIS ✅
+            <div class="menu-item-left">
+                <span class="menu-icon">📍</span>
+                <span class="menu-text">Addresses</span>
+            </div>
+            <span class="menu-arrow">›</span>
+        </div>
+        
+        <div class="menu-item" onclick="showProfileSection('payment')">  ← ADD THIS ✅
+            <div class="menu-item-left">
+                <span class="menu-icon">💳</span>
+                <span class="menu-text">Payment Methods</span>
+            </div>
+            <span class="menu-arrow">›</span>
+        </div>
+        
+        <div class="menu-item" onclick="showProfileSection('settings')">  ← ADD THIS ✅
+            <div class="menu-item-left">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Settings</span>
+            </div>
+            <span class="menu-arrow">›</span>
+        </div>
+    </div>
+    
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
+</div>
+
+            <!-- PROFILE SECTIONS - Add these after the profileTab closing </div> -->
+
+<!-- Addresses Section -->
+<div id="addressesSection" class="profile-section tab-content">
+    <div class="top-bar">
+        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+        <h2>My Addresses</h2>
+        <div style="width: 40px;"></div>
+    </div>
+    
+    <div class="profile-section-content">
+        <div class="error-message" id="addressError"></div>
+        <div class="success-message" id="addressSuccess"></div>
+        
+        <div class="form-section">
+            <h3>Delivery Address</h3>
+            <div class="input-group">
+                <label>Full Address</label>
+                <textarea id="deliveryAddress" rows="3" placeholder="Enter complete delivery address"></textarea>
+            </div>
+            <div class="input-group">
+                <label>Contact Number</label>
+                <input type="tel" id="deliveryContact" placeholder="09xx xxx xxxx">
+            </div>
+            <button class="btn-auth btn-primary" onclick="saveAddress()">Save Address</button>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Methods Section -->
+<div id="paymentSection" class="profile-section tab-content">
+    <div class="top-bar">
+        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+        <h2>Payment Methods</h2>
+        <div style="width: 40px;"></div>
+    </div>
+    
+    <div class="profile-section-content">
+        <div class="error-message" id="paymentError"></div>
+        <div class="success-message" id="paymentSuccess"></div>
+        
+        <div class="form-section">
+            <h3>Preferred Payment Method</h3>
+            <div class="radio-group">
+                <div class="radio-option selected" data-value="cod" onclick="selectPreferredPayment(this)">
+                    <div class="radio-circle"></div>
+                    <div>
+                        <div style="font-weight: 600;">Cash on Delivery (COD)</div>
+                        <div style="font-size: 12px; color: #999;">Pay when you receive your order</div>
+                    </div>
+                </div>
+                <div class="radio-option" data-value="gcash" onclick="selectPreferredPayment(this)">
+                    <div class="radio-circle"></div>
+                    <div>
+                        <div style="font-weight: 600;">GCash</div>
+                        <div style="font-size: 12px; color: #999;">Digital wallet payment</div>
+                    </div>
+                </div>
+                <div class="radio-option" data-value="card" onclick="selectPreferredPayment(this)">
+                    <div class="radio-circle"></div>
+                    <div>
+                        <div style="font-weight: 600;">Credit/Debit Card</div>
+                        <div style="font-size: 12px; color: #999;">Pay with your card</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="gcashSection" style="display: none; margin-top: 20px;">
+                <div class="input-group">
+                    <label>GCash Number</label>
+                    <input type="tel" id="gcashNumber" placeholder="09xx xxx xxxx">
+                </div>
+            </div>
+            
+            <div id="cardSection" style="display: none; margin-top: 20px;">
+                <div class="input-group">
+                    <label>Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label>Expiry Date</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-auth btn-primary" onclick="savePaymentMethod()">Save Payment Method</button>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Section -->
+<div id="settingsSection" class="profile-section tab-content">
+    <div class="top-bar">
+        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+        <h2>Settings</h2>
+        <div style="width: 40px;"></div>
+    </div>
+    
+    <div class="profile-section-content">
+        <div class="error-message" id="settingsError"></div>
+        <div class="success-message" id="settingsSuccess"></div>
+        
+        <!-- Profile Information -->
+        <div class="form-section">
+            <h3>Profile Information</h3>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="settingsName" placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="settingsEmail" placeholder="Enter your email" disabled style="background: #f5f5f5;">
+            </div>
+            <button class="btn-auth btn-primary" onclick="updateProfileInfo()">Update Profile</button>
+        </div>
+        
+        <!-- Change Password -->
+        <div class="form-section" style="margin-top: 15px;">
+            <h3>Change Password</h3>
+            <div class="input-group">
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" placeholder="Enter current password">
+            </div>
+            <div class="input-group">
+                <label>New Password</label>
+                <input type="password" id="newPassword" placeholder="Enter new password">
+            </div>
+            <div class="input-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm new password">
+            </div>
+            <button class="btn-auth btn-primary" onclick="changePassword()">Change Password</button>
+        </div>
+        
+        <!-- Notifications -->
+        <div class="form-section" style="margin-top: 15px;">
+            <h3>Notifications</h3>
+            <div class="setting-item">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 5px;">Order Updates</div>
+                    <div style="font-size: 12px; color: #999;">Get notified about your order status</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifOrders" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 5px;">Promotions</div>
+                    <div style="font-size: 12px; color: #999;">Receive special offers and discounts</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifPromos" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 5px;">New Products</div>
+                    <div style="font-size: 12px; color: #999;">Stay updated on new bread items</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifProducts" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <button class="btn-auth btn-primary" onclick="saveNotificationSettings()">Save Settings</button>
+        </div>
+    </div>
+</div>
 
             <!-- Bottom Navigation -->
             <div class="bottom-nav">

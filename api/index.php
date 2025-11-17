@@ -146,6 +146,11 @@ try {
             $controller->updateProfile();
             break;
             
+        case 'change_password':
+            $controller = new UserController($db);
+            $controller->changePassword();
+            break;
+            
         default:
             echo json_encode([
                 'success' => false,

@@ -154,8 +154,8 @@ class UserController {
             
             $user = $stmt->fetch();
             
-            // Verify current password
-            if (!password_verify($currentPassword, $user['password'])) {
+            // Verify current password (plain text comparison)
+            if ($currentPassword !== $user['password']) {
                 echo json_encode([
                     'success' => false,
                     'message' => 'Current password is incorrect'
@@ -163,13 +163,13 @@ class UserController {
                 return;
             }
             
-            // Hash new password
-            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            // Store new password in plain text
+            $plainPassword = $newPassword;
             
             // Update password
             $updateQuery = "UPDATE users SET password = :password WHERE user_id = :user_id";
             $updateStmt = $this->db->prepare($updateQuery);
-            $updateStmt->bindParam(':password', $hashedPassword);
+            $updateStmt->bindParam(':password', $plainPassword);
             $updateStmt->bindParam(':user_id', $userId);
             
             if ($updateStmt->execute()) {

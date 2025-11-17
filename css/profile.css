@@ -1,0 +1,264 @@
+/* Additional Profile Features CSS */
+
+/* Profile Sections */
+.profile-section {
+    display: none;
+    background: #FAFAFA;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.profile-section.active {
+    display: block;
+}
+
+.profile-section-content {
+    padding: 20px;
+}
+
+/* Textarea styling */
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s;
+    resize: vertical;
+}
+
+.input-group textarea:focus {
+    outline: none;
+    border-color: #FF6B35;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 28px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #FF6B35;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(22px);
+}
+
+/* Setting Item */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Card Input Formatting */
+#cardNumber {
+    letter-spacing: 2px;
+}
+
+#cardExpiry,
+#cardCVV {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Payment Method Icons */
+.payment-icon {
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+/* Back Button Hover */
+.top-bar span:hover {
+    color: #FF6B35;
+}
+
+/* Form Section Spacing */
+.form-section + .form-section {
+    margin-top: 15px;
+}
+
+/* Notification Badge */
+.notif-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #FF6B35;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Profile Avatar Upload (Future Feature) */
+.avatar-upload {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar-upload input {
+    display: none;
+}
+
+.avatar-upload:hover {
+    opacity: 0.8;
+}
+
+/* Address Card */
+.address-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #E0E0E0;
+}
+
+.address-card.selected {
+    border-color: #FF6B35;
+    background: #FFF5F0;
+}
+
+.address-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.address-type {
+    font-weight: 700;
+    color: #333;
+}
+
+.address-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.address-action-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #FF6B35;
+}
+
+/* Payment Card Display */
+.payment-card {
+    background: linear-gradient(135deg, #FF8C42, #FF6B35);
+    padding: 20px;
+    border-radius: 16px;
+    color: white;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.card-type {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.card-number-display {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+/* Success Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 375px) {
+    .profile-section-content {
+        padding: 15px;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+}
