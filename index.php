@@ -188,6 +188,19 @@
             color: #333;
         }
 
+        .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.app-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
         .profile-icon {
             width: 40px;
             height: 40px;
@@ -785,6 +798,7 @@
         }
     </style>
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/additional-styles.css">
 </head>
 <body>
     <div class="phone-frame">
@@ -875,10 +889,13 @@
         <div id="appScreen" class="app-screen">
             <!-- Browse Tab -->
             <div id="browseTab" class="tab-content active">
-                <div class="top-bar">
-                    <h2>Browse</h2>
-                    <div class="profile-icon" onclick="switchTab('profile')">👤</div>
-                </div>
+    <div class="top-bar">
+        <h2>Browse</h2>
+        <div class="top-bar-right">
+            <img src="assets/logo.png" alt="DoughMain" class="app-logo">
+            <div class="profile-icon" onclick="switchTab('profile')">👤</div>
+        </div>
+    </div>
                 
                 <div class="search-section">
                     <div class="search-box">

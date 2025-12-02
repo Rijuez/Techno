@@ -1,164 +1,214 @@
 /* Additional Styles for Image Support and Sale Feature */
+/* ULTRA VERSION: With !important to override any conflicts */
 
-/* Product Image Styling */
+/* ===== CRITICAL: Product Image Container Must Be Relative ===== */
 .product-image-container {
-    width: 100px;
-    height: 100px;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-    background: #f5f5f5;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;  /* CRITICAL FOR BADGE POSITIONING */
+    flex-shrink: 0 !important;
+    background: #f5f5f5 !important;
 }
 
 .product-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
 }
 
-/* Sale Tag */
+/* ===== SALE TAG: Bottom-left position, no product border ===== */
 .sale-tag {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background: #FF6B35;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    z-index: 1;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: absolute !important;  /* CRITICAL! */
+    bottom: 8px !important;  /* Changed from top to bottom */
+    left: 8px !important;    /* Changed from right to left */
+    background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%) !important;
+    color: white !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    z-index: 2 !important;
+    box-shadow: 0 4px 12px rgba(255, 87, 34, 0.5) !important;
+    text-transform: uppercase !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    animation: saleGlow 2s ease-in-out infinite !important;
+    line-height: 1 !important;
+    display: inline-block !important;
 }
 
-/* Sale Chip in Categories */
+/* Sale tag glow animation */
+@keyframes saleGlow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(255, 87, 34, 0.5);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(255, 87, 34, 0.8);
+    }
+}
+
+/* Sale Chip in Category Bar */
 .sale-chip {
-    background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
+    background: #FF6B35 !important;
     color: white !important;
-    font-weight: 600;
+    font-weight: 600 !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.sale-chip:hover {
+    background: #FF5722 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4) !important;
 }
 
 .sale-chip.active {
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-    transform: translateY(-2px);
+    background: #FF5722 !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.5) !important;
+    transform: scale(1.05) !important;
 }
 
-/* Product Item on Sale Highlight */
+/* Product Item on Sale - NO border, NO background change */
 .product-item.on-sale {
-    border: 2px solid #FF6B35;
-    background: linear-gradient(to bottom, #FFF5F0 0%, white 100%);
+    /* Removed border and background - looks like normal products */
+    position: relative !important;
 }
+
+/* Removed pulsing effect - sale products look normal now */
 
 /* Cart Image Styling */
 .cart-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    object-fit: cover;
-    background: #f5f5f5;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 12px !important;
+    object-fit: cover !important;
+    background: #f5f5f5 !important;
+}
+
+/* Cart item with sale badge */
+.cart-item .sale-badge {
+    display: inline-block !important;
+    background: #FF6B35 !important;
+    color: white !important;
+    padding: 2px 8px !important;
+    border-radius: 10px !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    margin-left: 8px !important;
+    vertical-align: middle !important;
 }
 
 /* Empty State Image */
 .empty-state img {
-    width: 120px;
-    height: 120px;
-    opacity: 0.3;
-    margin-bottom: 20px;
+    width: 120px !important;
+    height: 120px !important;
+    opacity: 0.3 !important;
+    margin-bottom: 20px !important;
 }
 
 /* Logo Image */
 .logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 30px;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 30px !important;
 }
 
 /* Placeholder Image Fallback */
 img[src="assets/placeholder-bread.png"] {
-    background: linear-gradient(135deg, #FFE5B4 0%, #FFD700 100%);
-    padding: 10px;
+    background: linear-gradient(135deg, #FFE5B4 0%, #FFD700 100%) !important;
+    padding: 10px !important;
 }
 
 /* Sale Page Specific Styles */
 .sale-header {
-    background: linear-gradient(135deg, #FF8C42, #FF6B35);
-    padding: 30px 20px;
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
+    padding: 30px 20px !important;
+    text-align: center !important;
+    color: white !important;
+    margin-bottom: 20px !important;
+    border-radius: 12px !important;
 }
 
 .sale-header h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 28px !important;
+    margin-bottom: 10px !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .sale-header p {
-    font-size: 14px;
-    opacity: 0.9;
+    font-size: 14px !important;
+    opacity: 0.9 !important;
 }
+
+/* Discount Badge on Product Cards */
+.discount-badge {
+    background: #4CAF50 !important;
+    color: white !important;
+    font-weight: 700 !important;
+    padding: 3px 8px !important;
+    border-radius: 8px !important;
+    font-size: 11px !important;
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3) !important;
+}
+
+/* Price section looks normal for sale items */
 
 /* Sale Timer (for future implementation) */
 .sale-timer {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 12px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    background: rgba(255, 255, 255, 0.2) !important;
+    padding: 15px !important;
+    border-radius: 12px !important;
+    margin-top: 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
 }
 
 .timer-unit {
-    text-align: center;
+    text-align: center !important;
 }
 
 .timer-value {
-    font-size: 24px;
-    font-weight: 700;
-    display: block;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    display: block !important;
 }
 
 .timer-label {
-    font-size: 11px;
-    opacity: 0.8;
-}
-
-/* Animation for Sale Items */
-@keyframes salePulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
-    }
-}
-
-.product-item.on-sale {
-    animation: salePulse 2s infinite;
+    font-size: 11px !important;
+    opacity: 0.8 !important;
 }
 
 /* Responsive Image Adjustments */
 @media (max-width: 375px) {
     .product-image-container {
-        width: 90px;
-        height: 90px;
+        width: 90px !important;
+        height: 90px !important;
     }
     
     .cart-image {
-        width: 70px;
-        height: 70px;
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    .sale-tag {
+        padding: 4px 10px !important;
+        font-size: 10px !important;
+        top: 6px !important;
+        right: 6px !important;
     }
 }
 
 /* Loading Image Placeholder */
 .image-loading {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%) !important;
+    background-size: 200% 100% !important;
+    animation: loading 1.5s infinite !important;
 }
 
 @keyframes loading {
@@ -172,70 +222,104 @@ img[src="assets/placeholder-bread.png"] {
 
 /* Image Error State */
 .image-error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f5f5f5;
-    color: #999;
-    font-size: 12px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f5f5f5 !important;
+    color: #999 !important;
+    font-size: 12px !important;
 }
 
 /* Badge Container for Multiple Badges */
 .badge-container {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 1;
+    position: absolute !important;
+    top: 5px !important;
+    left: 5px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    z-index: 1 !important;
 }
 
 /* Low Stock Badge */
 .low-stock-badge {
-    background: #FFC107;
-    color: #333;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: #FFC107 !important;
+    color: #333 !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
 }
 
 /* New Product Badge */
 .new-badge {
-    background: #4CAF50;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: #4CAF50 !important;
+    color: white !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
 }
 
 /* Category Icons */
 .category-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    margin-right: 8px;
-    vertical-align: middle;
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    margin-right: 8px !important;
+    vertical-align: middle !important;
 }
 
 /* Profile Image */
 .profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
 }
 
 /* Bakery Logo */
 .bakery-logo {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 5px;
-    vertical-align: middle;
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    margin-right: 5px !important;
+    vertical-align: middle !important;
+}
+
+/* Special: Flash Sale Extra Styling */
+.product-item.flash-sale .sale-tag {
+    background: linear-gradient(135deg, #FF1744 0%, #F50057 100%) !important;
+    animation: flashPulse 1s ease-in-out infinite !important;
+}
+
+@keyframes flashPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Hover effect same for all products */
+.product-item:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Smooth transitions */
+.product-item {
+    transition: all 0.3s ease !important;
+}
+
+.sale-tag {
+    transition: all 0.3s ease !important;
+}
+
+.product-item:hover .sale-tag {
+    transform: scale(1.1) !important;
 }

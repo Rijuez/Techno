@@ -182,11 +182,11 @@ async function loadCategories() {
 function renderCategories(categories) {
     const container = document.getElementById('categoriesList');
     
-    // Add Sale category at the beginning
+    // Add Sale category at the beginning (no emoji, cleaner look)
     let categoriesHtml = `
         <div class="category-chip ${currentView === 'sale' ? 'active sale-chip' : 'sale-chip'}" 
              onclick="showSaleProducts()">
-            🏷️ Sale
+            SALE
         </div>
     `;
     
