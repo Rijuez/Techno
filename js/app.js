@@ -2,6 +2,7 @@
  * Main Application Logic
  * DoughMain - Bread Rescue Application
  * Updated with Image Support and Sale Feature
+ * FIXED: Tab switching navigation
  */
 
 let currentUser = null;
@@ -541,7 +542,7 @@ async function placeOrder() {
         
         currentCart = [];
         showScreen('appScreen');
-        switchTab('browse');
+        navigateToTab('browse');
         
         // Reload products to update stock
         await loadProducts();
@@ -552,7 +553,7 @@ async function placeOrder() {
 
 function backToCart() {
     showScreen('appScreen');
-    switchTab('cart');
+    navigateToTab('cart');
 }
 
 // Navigation Functions
@@ -563,10 +564,17 @@ function showScreen(screenId) {
     document.getElementById(screenId).classList.add('active');
 }
 
-async function switchTab(tab) {
+// FIXED: New function to handle tab switching programmatically
+async function navigateToTab(tab) {
     // Update nav items
-    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const label = item.querySelector('.nav-label');
+        if (label && label.textContent.toLowerCase() === tab.toLowerCase()) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
     
     // Update content
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -585,6 +593,11 @@ async function switchTab(tab) {
             await loadProducts();
         }
     }
+}
+
+// FIXED: Updated switchTab for bottom navigation clicks
+async function switchTab(tab) {
+    await navigateToTab(tab);
 }
 
 async function viewOrders() {

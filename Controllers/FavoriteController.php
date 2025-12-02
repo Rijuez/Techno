@@ -2,6 +2,7 @@
 /**
  * Favorite Controller
  * Handles favorite products operations
+ * FIXED: Added image_url and is_on_sale support
  */
 
 class FavoriteController {
@@ -36,9 +37,12 @@ class FavoriteController {
                         p.original_price,
                         p.discounted_price,
                         p.discount_percentage,
-                        p.emoji,
+                        p.image_url,
                         p.stock_quantity,
                         p.is_available,
+                        p.is_on_sale,
+                        p.sale_start_date,
+                        p.sale_end_date,
                         b.name as bakery_name,
                         c.name as category_name
                       FROM favorites f

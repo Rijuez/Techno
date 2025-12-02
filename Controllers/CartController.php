@@ -2,6 +2,7 @@
 /**
  * Cart Controller
  * Handles shopping cart operations
+ * FIXED: Added image_url support
  */
 
 class CartController {
@@ -34,7 +35,7 @@ class CartController {
                         p.product_id,
                         p.name,
                         p.discounted_price,
-                        p.emoji,
+                        p.image_url,
                         b.name as bakery_name,
                         (p.discounted_price * c.quantity) as subtotal
                       FROM cart c
