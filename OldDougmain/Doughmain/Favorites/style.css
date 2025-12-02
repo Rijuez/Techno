@@ -1,0 +1,685 @@
+.i-phone-16-pro-5,
+.i-phone-16-pro-5 * {
+  box-sizing: border-box;
+}
+.i-phone-16-pro-5 {
+  background: #f8eddf;
+  height: 874px;
+  position: relative;
+  overflow: hidden;
+}
+.status-bar-i-phone {
+  padding: 21px 16px 19px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 154px;
+  align-items: center;
+  justify-content: center;
+  width: 402px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.time {
+  padding: 2px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.time2 {
+  color: var(--labels-primary, #000000);
+  text-align: center;
+  font-family: "SfPro-Semibold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  position: relative;
+}
+.levels {
+  padding: 1px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.cellular-connection {
+  flex-shrink: 0;
+  width: 19.2px;
+  height: 12.23px;
+  position: relative;
+  overflow: visible;
+}
+.wifi {
+  flex-shrink: 0;
+  width: 17.14px;
+  height: 12.33px;
+  position: relative;
+  overflow: visible;
+}
+.battery {
+  flex-shrink: 0;
+  width: 27.33px;
+  height: 13px;
+  position: relative;
+  overflow: visible;
+}
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 326px;
+  height: 69px;
+  position: absolute;
+  left: 38px;
+  top: 802px;
+}
+.group-1 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.home {
+  color: #1e1e1e;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 1.33px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.home2 {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 0px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-5 {
+  flex-shrink: 0;
+  width: 40px;
+  height: 53.83px;
+  position: static;
+}
+.search {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 76.04px;
+  top: 35.59px;
+  width: 32.93px;
+  height: 25.83px;
+}
+.search2 {
+  width: 40px;
+  height: 35px;
+  position: absolute;
+  left: 72.04px;
+  top: 7.59px;
+  overflow: visible;
+}
+.group-2 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.group-3 {
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.cart {
+  color: #404040;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 145.37px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.shopping-bag {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 144.04px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-32 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.group-33 {
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.favorite {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 216.08px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.heart {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 217.13px;
+  top: 8px;
+  overflow: visible;
+}
+.group-4 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.profile {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 290.22px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.user {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 291.27px;
+  top: 8px;
+  overflow: visible;
+}
+.location-on {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  left: 21px;
+  top: 62px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.deliver-to {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 52px;
+  top: 65px;
+  width: 98px;
+  height: 27px;
+}
+.camdas {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 26px;
+  top: 97px;
+  width: 99px;
+  height: 28px;
+}
+.image-2 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.image-3 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.rectangle-3 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 373px;
+  height: 73px;
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: 130px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.my-favorites {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 51px;
+  top: 144px;
+  width: 131px;
+  height: 28px;
+}
+._2-items {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 19px;
+  top: 169px;
+  width: 79px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-6 {
+  height: auto;
+  position: absolute;
+  left: 22px;
+  top: 141px;
+  overflow: visible;
+}
+.group-14 {
+  position: absolute;
+  inset: 0;
+}
+.pandesal-1 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 28px;
+  top: 491px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-16 {
+  position: absolute;
+  inset: 0;
+}
+.group-62 {
+  width: 69px;
+  height: 18px;
+  position: static;
+}
+.rectangle-1 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 69px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 510px;
+}
+.putok {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 41px;
+  top: 512.97px;
+  width: 43px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-17 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-2 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 27px;
+  top: 617.97px;
+}
+.group-7 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.group-63 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-12 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 27px;
+  top: 617.97px;
+}
+.matamis-na-matibay-slightly-sweet-bread-with-a-crackly-top-affordable-pang-tangal-gutom {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 46px;
+  top: 626.97px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.group-18 {
+  position: absolute;
+  inset: 0;
+}
+.group-64 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-13 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 41px;
+  top: 677.97px;
+}
+.add-to-cart {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 135px;
+  top: 683px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-19 {
+  position: absolute;
+  inset: 0;
+}
+.group-65 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-14 {
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 504px;
+}
+.heart2 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 505px;
+  overflow: visible;
+}
+.group-41 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-15 {
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 501px;
+}
+.plus {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 139px;
+  top: 692px;
+  overflow: visible;
+}
+._18-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-ExtraBold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 308px;
+  top: 618px;
+  width: 87px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.group-11 {
+  position: absolute;
+  inset: 0;
+}
+.pandesal-12 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 28px;
+  top: 238px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-37 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-22 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 28px;
+  top: 364.97px;
+}
+.rectangle-16 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 28px;
+  top: 364.97px;
+}
+.group-8 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-17 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 40px;
+  top: 424.97px;
+}
+.group-12 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-18 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 69px;
+  height: 18px;
+  position: absolute;
+  left: 40px;
+  top: 253.97px;
+}
+.add-to-cart2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 142px;
+  top: 430.97px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.abot-kaya-sa-umaga-soft-and-filling-perfect-with-coffee-or-palaman-a-budget-friendly-breakfast-that-never-fails {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 373px;
+  width: 274px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pandesal {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 46px;
+  top: 256.97px;
+  width: 54px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 434.97px;
+  overflow: visible;
+}
+._10-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 304px;
+  top: 362px;
+  width: 70px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.group-43 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-19 {
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 244px;
+}
+.heart3 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 245px;
+  overflow: visible;
+}
+.heart4 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 245px;
+  overflow: visible;
+}

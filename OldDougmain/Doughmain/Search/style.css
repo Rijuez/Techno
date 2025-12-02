@@ -1,0 +1,1486 @@
+.i-phone-16-pro-3,
+.i-phone-16-pro-3 * {
+  box-sizing: border-box;
+}
+.i-phone-16-pro-3 {
+  background: #f8eddf;
+  height: 874px;
+  position: relative;
+  overflow: hidden;
+}
+.status-bar-i-phone {
+  padding: 21px 16px 19px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 154px;
+  align-items: center;
+  justify-content: center;
+  width: 402px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.time {
+  padding: 2px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.time2 {
+  color: var(--labels-primary, #000000);
+  text-align: center;
+  font-family: "SfPro-Semibold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  position: relative;
+}
+.levels {
+  padding: 1px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.cellular-connection {
+  flex-shrink: 0;
+  width: 19.2px;
+  height: 12.23px;
+  position: relative;
+  overflow: visible;
+}
+.wifi {
+  flex-shrink: 0;
+  width: 17.14px;
+  height: 12.33px;
+  position: relative;
+  overflow: visible;
+}
+.battery {
+  flex-shrink: 0;
+  width: 27.33px;
+  height: 13px;
+  position: relative;
+  overflow: visible;
+}
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 326px;
+  height: 69px;
+  position: absolute;
+  left: 38px;
+  top: 802px;
+}
+.group-1 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.home {
+  color: #1e1e1e;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 1.33px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.home2 {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 0px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-5 {
+  flex-shrink: 0;
+  width: 40px;
+  height: 53.83px;
+  position: static;
+}
+.search {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 76.04px;
+  top: 35.59px;
+  width: 32.93px;
+  height: 25.83px;
+}
+.search2 {
+  width: 40px;
+  height: 35px;
+  position: absolute;
+  left: 72.04px;
+  top: 7.59px;
+  overflow: visible;
+}
+.group-2 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.group-3 {
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.cart {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 145.37px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.shopping-bag {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 144.04px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-32 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.group-33 {
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.favorite {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 216.08px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.heart {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 217.13px;
+  top: 8px;
+  overflow: visible;
+}
+.group-4 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.profile {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 290.22px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.user {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 291.27px;
+  top: 8px;
+  overflow: visible;
+}
+.location-on {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  left: 21px;
+  top: 62px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.deliver-to {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 52px;
+  top: 65px;
+  width: 98px;
+  height: 27px;
+}
+.camdas {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 26px;
+  top: 97px;
+  width: 99px;
+  height: 28px;
+}
+.image-2 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.image-3 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.rectangle-3 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 312px;
+  height: 38px;
+  position: absolute;
+  left: 16px;
+  top: 130px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-4 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 49px;
+  height: 38px;
+  position: absolute;
+  left: 340px;
+  top: 130px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.funnel {
+  width: 23px;
+  height: 20px;
+  position: absolute;
+  left: 353px;
+  top: 141px;
+  object-fit: cover;
+}
+.search-for-breads {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 52px;
+  top: 137px;
+  width: 129px;
+  height: 27px;
+}
+.search3 {
+  width: 22px;
+  height: 28px;
+  position: absolute;
+  left: 27px;
+  top: 135px;
+  object-fit: cover;
+}
+.frame-5 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 406px;
+  height: 70px;
+  position: absolute;
+  left: 5px;
+  top: 160px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.hover-button {
+  background: #f8eddf;
+  border-radius: var(--scroll-edge-effect-blur-radius, 10px);
+  padding: 10px 29px 10px 29px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 76px;
+  height: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.nigga {
+  flex-shrink: 0;
+  width: 51px;
+  height: 22px;
+  position: relative;
+}
+.nigga2 {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  right: 27.45%;
+  left: 27.45%;
+  width: 45.1%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.hover-button2 {
+  background: #f8eddf;
+  border-radius: var(--scroll-edge-effect-blur-radius, 10px);
+  padding: 10px 29px 10px 29px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 134px;
+  height: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.nigga3 {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  right: -52.94%;
+  left: -54.9%;
+  width: 207.84%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.hover-button3 {
+  background: #f8eddf;
+  border-radius: var(--scroll-edge-effect-blur-radius, 10px);
+  padding: 10px 29px 10px 29px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 117px;
+  height: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.nigga4 {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  right: -47.06%;
+  left: -49.02%;
+  width: 196.08%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.hover-button4 {
+  background: #f8eddf;
+  border-radius: var(--scroll-edge-effect-blur-radius, 10px);
+  padding: 10px 29px 10px 29px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 112px;
+  height: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.nigga5 {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  right: -54.9%;
+  left: -54.9%;
+  width: 209.8%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.nigga6 {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  right: -41.18%;
+  left: -41.18%;
+  width: 182.35%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.frame-52 {
+  background: #f8eddf;
+  width: 403px;
+  height: 534px;
+  position: absolute;
+  left: -1px;
+  top: 216px;
+  overflow-y: auto;
+}
+.group-36 {
+  position: absolute;
+  inset: 0;
+}
+.group-35 {
+  width: 352px;
+  height: 1304.93px;
+  position: static;
+}
+.group-11 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-1 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 28px;
+  top: 21px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-8 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-2 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 28px;
+  top: 147.97px;
+}
+.group-7 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.group-6 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-1 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 28px;
+  top: 147.97px;
+}
+.group-82 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.group-62 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-12 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 40px;
+  top: 207.97px;
+}
+.group-12 {
+  width: 69px;
+  height: 18px;
+  position: static;
+}
+.group-63 {
+  width: 69px;
+  height: 18px;
+  position: static;
+}
+.rectangle-13 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 69px;
+  height: 18px;
+  position: absolute;
+  left: 40px;
+  top: 36.97px;
+}
+.add-to-cart {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 142px;
+  top: 213.97px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.abot-kaya-sa-umaga-soft-and-filling-perfect-with-coffee-or-palaman-a-budget-friendly-breakfast-that-never-fails {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 156px;
+  width: 274px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pandesal {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 46px;
+  top: 39.97px;
+  width: 54px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-14 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-12 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 289.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-20 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-13 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 558.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-25 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-14 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 827.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-30 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-15 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 1090.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-16 {
+  width: 69px;
+  height: 18px;
+  position: static;
+}
+.rectangle-14 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 69px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 305.93px;
+}
+.group-21 {
+  width: 84px;
+  height: 18px;
+  position: static;
+}
+.group-64 {
+  width: 84px;
+  height: 18px;
+  position: static;
+}
+.rectangle-15 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 84px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 574.93px;
+}
+.group-26 {
+  width: 84px;
+  height: 18px;
+  position: static;
+}
+.rectangle-16 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 84px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 843.93px;
+}
+.group-31 {
+  width: 84px;
+  height: 18px;
+  position: static;
+}
+.rectangle-17 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 84px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 1106.93px;
+}
+.group-352 {
+  width: 84px;
+  height: 21px;
+  position: static;
+}
+.group-65 {
+  width: 84px;
+  height: 21px;
+  position: static;
+}
+.rectangle-18 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 84px;
+  height: 21px;
+  position: absolute;
+  left: 154px;
+  top: 1145px;
+}
+.putok {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 308.93px;
+  width: 43px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pan-de-coco {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 577.97px;
+  width: 62px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ensaymada {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 846.97px;
+  width: 62px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.monay {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 1109.97px;
+  width: 62px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.out-of-stock {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 165px;
+  top: 1149.03px;
+  width: 62px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-17 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-22 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 416.93px;
+}
+.rectangle-19 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 416.93px;
+}
+.group-22 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-23 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 685.93px;
+}
+.rectangle-110 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 685.93px;
+}
+.group-27 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-24 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 954.93px;
+}
+.rectangle-111 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 954.93px;
+}
+.group-322 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-25 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 1217.93px;
+}
+.rectangle-112 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 1217.93px;
+}
+.matamis-na-matibay-slightly-sweet-bread-with-a-crackly-top-affordable-pang-tangal-gutom {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 425.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.sweet-surprise-sa-loob-fluffy-bread-with-coconut-filling-that-makes-every-bite-special {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 694.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.soft-sweet-and-cheesy-a-fluffy-merienda-that-melts-in-your-mouth {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 963.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.matibay-sa-gutom-dense-and-chewy-bread-that-keeps-you-full-longer-isang-piraso-busog-ka-na {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 1226.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.group-18 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-113 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 476.93px;
+}
+.group-23 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-114 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 745.93px;
+}
+.group-28 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-115 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 1014.93px;
+}
+.group-332 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-116 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 1277.93px;
+}
+.add-to-cart2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 482.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-to-cart3 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 751.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-to-cart4 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 1020.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-to-cart5 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 1283.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-15 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.group-66 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-117 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 27.97px;
+}
+.heart2 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 28.97px;
+  overflow: visible;
+}
+.group-19 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-118 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 296.97px;
+}
+.heart3 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 297.97px;
+  overflow: visible;
+}
+.group-24 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-119 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 565.97px;
+}
+.heart4 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 566.97px;
+  overflow: visible;
+}
+.group-29 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-120 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 834.97px;
+}
+.heart5 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 835.97px;
+  overflow: visible;
+}
+.group-34 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-121 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 1097.97px;
+}
+.heart6 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 1098.97px;
+  overflow: visible;
+}
+.image-4 {
+  border-radius: 4px;
+  width: 28.08px;
+  height: 32.85px;
+  position: absolute;
+  left: 333.64px;
+  top: 661.96px;
+  transform-origin: 0 0;
+  transform: rotate(121.15deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 28.08/32.85;
+}
+.plus {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus3 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 487.97px;
+  overflow: visible;
+}
+.plus4 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 756.97px;
+  overflow: visible;
+}
+.plus5 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 1022.97px;
+  overflow: visible;
+}
+.plus6 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 1288.97px;
+  overflow: visible;
+}
+.group-362 {
+  width: 352px;
+  height: 1304.93px;
+  position: static;
+}
+.heart7 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 28.97px;
+  overflow: visible;
+}
+.heart8 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 297.97px;
+  overflow: visible;
+}
+.heart9 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 566.97px;
+  overflow: visible;
+}
+.heart10 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 835.97px;
+  overflow: visible;
+}
+.heart11 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 1098.97px;
+  overflow: visible;
+}
+.plus7 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus8 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus9 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 487.97px;
+  overflow: visible;
+}
+.plus10 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 756.97px;
+  overflow: visible;
+}
+.plus11 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 1022.97px;
+  overflow: visible;
+}
+.plus12 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 1288.97px;
+  overflow: visible;
+}
+._18-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-ExtraBold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 303px;
+  top: 417px;
+  width: 87px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._19-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-ExtraBold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 304px;
+  top: 686px;
+  width: 87px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._22-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-ExtraBold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 305px;
+  top: 955px;
+  width: 87px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._15-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 311px;
+  top: 1214px;
+  width: 87px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._15-1-dozen-span {
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-weight: 700;
+}
+._15-1-dozen-span2 {
+  font-family: "NotoLoopedThaiUi-ExtraBold", sans-serif;
+  font-weight: 800;
+}
+._10-1-dozen {
+  color: #da903d;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 304px;
+  top: 145px;
+  width: 70px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}

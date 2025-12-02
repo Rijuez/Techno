@@ -1,0 +1,706 @@
+.i-phone-16-pro-7,
+.i-phone-16-pro-7 * {
+  box-sizing: border-box;
+}
+.i-phone-16-pro-7 {
+  background: #f8eddf;
+  height: 874px;
+  position: relative;
+  overflow: hidden;
+}
+.status-bar-i-phone {
+  padding: 21px 16px 19px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 154px;
+  align-items: center;
+  justify-content: center;
+  width: 402px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.time {
+  padding: 2px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.time2 {
+  color: var(--labels-primary, #000000);
+  text-align: center;
+  font-family: "SfPro-Semibold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  position: relative;
+}
+.levels {
+  padding: 1px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.cellular-connection {
+  flex-shrink: 0;
+  width: 19.2px;
+  height: 12.23px;
+  position: relative;
+  overflow: visible;
+}
+.wifi {
+  flex-shrink: 0;
+  width: 17.14px;
+  height: 12.33px;
+  position: relative;
+  overflow: visible;
+}
+.battery {
+  flex-shrink: 0;
+  width: 27.33px;
+  height: 13px;
+  position: relative;
+  overflow: visible;
+}
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 326px;
+  height: 69px;
+  position: absolute;
+  left: 38px;
+  top: 802px;
+}
+.group-1 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.home {
+  color: #1e1e1e;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 1.33px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.home2 {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 0px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-5 {
+  flex-shrink: 0;
+  width: 40px;
+  height: 53.83px;
+  position: static;
+}
+.search {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 76.04px;
+  top: 35.59px;
+  width: 32.93px;
+  height: 25.83px;
+}
+.search2 {
+  width: 40px;
+  height: 35px;
+  position: absolute;
+  left: 72.04px;
+  top: 7.59px;
+  overflow: visible;
+}
+.group-2 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.group-3 {
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.cart {
+  color: #404040;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 145.37px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.shopping-bag {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 144.04px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-32 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.group-33 {
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.favorite {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 216.08px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.heart {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 217.13px;
+  top: 8px;
+  overflow: visible;
+}
+.group-4 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.profile {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 290.22px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.user {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 291.27px;
+  top: 8px;
+  overflow: visible;
+}
+.location-on {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  left: 21px;
+  top: 62px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.deliver-to {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 52px;
+  top: 65px;
+  width: 98px;
+  height: 27px;
+}
+.camdas {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 26px;
+  top: 97px;
+  width: 99px;
+  height: 28px;
+}
+.image-2 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.image-3 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.rectangle-3 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 373px;
+  height: 91px;
+  position: absolute;
+  left: calc(50% - 184px);
+  top: 130px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-4 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 335px;
+  height: 63px;
+  position: absolute;
+  left: calc(50% - 166px);
+  top: 251px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-10 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 335px;
+  height: 63px;
+  position: absolute;
+  left: calc(50% - 166px);
+  top: 326px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-11 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 335px;
+  height: 62px;
+  position: absolute;
+  left: calc(50% - 164px);
+  top: 402px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-12 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 335px;
+  height: 63px;
+  position: absolute;
+  left: calc(50% - 166px);
+  top: 477px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-13 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 335px;
+  height: 63px;
+  position: absolute;
+  left: calc(50% - 166px);
+  top: 552px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-9 {
+  background: #f8eddf;
+  border-radius: 12px;
+  width: 313px;
+  height: 44px;
+  position: absolute;
+  left: calc(50% - 161px);
+  top: 716px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mark-jade {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 97px;
+  top: 155px;
+  width: 95px;
+  height: 28px;
+}
+.mahilig-sa-tinapay-gmail-com {
+  color: #706f6f;
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 97px;
+  top: 168px;
+  width: 196px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.update-your-personal-information {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 9px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 86px;
+  top: 275px;
+  width: 161px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manage-your-delivery-location {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 9px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 351px;
+  width: 139px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-or-edit-payment-options {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 9px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 425px;
+  width: 132px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manage-your-preferences {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 9px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 91px;
+  top: 499px;
+  width: 116px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.get-help-or-contact-us {
+  color: #706f6f;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 9px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 575px;
+  width: 100px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-profile {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 261px;
+  width: 59px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delivery-addresses {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 336px;
+  width: 107px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment-methods {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 411px;
+  width: 102px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notifications {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 487px;
+  width: 71px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sign-out {
+  color: #ff0000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 167px;
+  top: 726px;
+  width: 67px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.help-support {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 90px;
+  top: 562px;
+  width: 85px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.test-account {
+  width: 73px;
+  height: 73px;
+  position: absolute;
+  left: 24px;
+  top: 137px;
+  object-fit: cover;
+}
+.more-than {
+  width: 16px;
+  height: 42px;
+  position: absolute;
+  left: 342px;
+  top: 263px;
+  object-fit: cover;
+}
+.more-than2 {
+  width: 16px;
+  height: 42px;
+  position: absolute;
+  left: 342px;
+  top: 338px;
+  object-fit: cover;
+}
+.more-than3 {
+  width: 16px;
+  height: 43px;
+  position: absolute;
+  left: 342px;
+  top: 413px;
+  object-fit: cover;
+}
+.more-than4 {
+  width: 16px;
+  height: 42px;
+  position: absolute;
+  left: 342px;
+  top: 489px;
+  object-fit: cover;
+}
+.more-than5 {
+  width: 16px;
+  height: 43px;
+  position: absolute;
+  left: 342px;
+  top: 564px;
+  object-fit: cover;
+}
+.test-account2 {
+  width: 37px;
+  height: 44px;
+  position: absolute;
+  left: 45px;
+  top: 261px;
+  object-fit: cover;
+}
+.ellipse-1 {
+  background: #999999;
+  border-radius: 50%;
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  left: 48px;
+  top: 344px;
+}
+.location {
+  width: 21px;
+  height: 23px;
+  position: absolute;
+  left: 53px;
+  top: 349px;
+  object-fit: cover;
+}
+.ellipse-2 {
+  background: #999999;
+  border-radius: 50%;
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  left: 48px;
+  top: 344px;
+}
+.ellipse-3 {
+  background: #999999;
+  border-radius: 50%;
+  width: 32px;
+  height: 29px;
+  position: absolute;
+  left: 48px;
+  top: 420px;
+}
+.ellipse-4 {
+  background: #999999;
+  border-radius: 50%;
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  left: 48px;
+  top: 495px;
+}
+.ellipse-5 {
+  background: #999999;
+  border-radius: 50%;
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  left: 48px;
+  top: 570px;
+}
+.logout {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 136px;
+  top: 729px;
+  object-fit: cover;
+}
+.magnetic-card {
+  width: 18px;
+  height: 29px;
+  position: absolute;
+  left: 54px;
+  top: 422px;
+  object-fit: cover;
+}
+.bell {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 53px;
+  top: 499px;
+  object-fit: cover;
+}
+.question-mark {
+  width: 20px;
+  height: 24px;
+  position: absolute;
+  left: 54px;
+  top: 573px;
+  object-fit: cover;
+}

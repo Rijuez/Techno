@@ -1,0 +1,1043 @@
+.i-phone-16-pro-6,
+.i-phone-16-pro-6 * {
+  box-sizing: border-box;
+}
+.i-phone-16-pro-6 {
+  background: #f8eddf;
+  height: 874px;
+  position: relative;
+  overflow: hidden;
+}
+.status-bar-i-phone {
+  padding: 21px 16px 19px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 154px;
+  align-items: center;
+  justify-content: center;
+  width: 402px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.time {
+  padding: 2px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.time2 {
+  color: var(--labels-primary, #000000);
+  text-align: center;
+  font-family: "SfPro-Semibold", sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  position: relative;
+}
+.levels {
+  padding: 1px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 22px;
+  position: relative;
+}
+.cellular-connection {
+  flex-shrink: 0;
+  width: 19.2px;
+  height: 12.23px;
+  position: relative;
+  overflow: visible;
+}
+.wifi {
+  flex-shrink: 0;
+  width: 17.14px;
+  height: 12.33px;
+  position: relative;
+  overflow: visible;
+}
+.battery {
+  flex-shrink: 0;
+  width: 27.33px;
+  height: 13px;
+  position: relative;
+  overflow: visible;
+}
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 326px;
+  height: 69px;
+  position: absolute;
+  left: 38px;
+  top: 802px;
+}
+.group-1 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.home {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 1.33px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.home2 {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 0px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-5 {
+  flex-shrink: 0;
+  width: 40px;
+  height: 53.83px;
+  position: static;
+}
+.search {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 76.04px;
+  top: 35.59px;
+  width: 32.93px;
+  height: 25.83px;
+}
+.search2 {
+  width: 40px;
+  height: 35px;
+  position: absolute;
+  left: 72.04px;
+  top: 7.59px;
+  overflow: visible;
+}
+.group-2 {
+  flex-shrink: 0;
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.group-3 {
+  width: 40.04px;
+  height: 54px;
+  position: static;
+}
+.cart {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 145.37px;
+  top: 35.67px;
+  width: 34.7px;
+  height: 25.83px;
+}
+.shopping-bag {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 144.04px;
+  top: 7.5px;
+  overflow: visible;
+}
+.group-32 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.group-33 {
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.favorite {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 216.08px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.heart {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 217.13px;
+  top: 8px;
+  overflow: visible;
+}
+.group-4 {
+  flex-shrink: 0;
+  width: 42.15px;
+  height: 53px;
+  position: static;
+}
+.profile {
+  color: #000000;
+  text-align: center;
+  font-family: "InriaSans-Regular", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 290.22px;
+  top: 35px;
+  width: 42.15px;
+  height: 26px;
+}
+.user {
+  width: 40.04px;
+  height: 35.22px;
+  position: absolute;
+  left: 291.27px;
+  top: 8px;
+  overflow: visible;
+}
+.location-on {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  left: 21px;
+  top: 62px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.deliver-to {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 52px;
+  top: 65px;
+  width: 98px;
+  height: 27px;
+}
+.camdas {
+  color: #000000;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 26px;
+  top: 97px;
+  width: 99px;
+  height: 28px;
+}
+.image-2 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.image-3 {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  width: 90px;
+  height: 51px;
+  position: absolute;
+  left: 299px;
+  top: 74px;
+  object-fit: cover;
+  aspect-ratio: 90/51;
+}
+.frame-4 {
+  background: #f8eddf;
+  width: 403px;
+  height: 669px;
+  position: absolute;
+  left: -1px;
+  top: 128px;
+  overflow-y: auto;
+}
+.group-44 {
+  position: absolute;
+  inset: 0;
+}
+.group-11 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-1 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 28px;
+  top: 21px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-8 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-2 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 28px;
+  top: 147.97px;
+}
+.group-7 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.group-6 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-1 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 28px;
+  top: 147.97px;
+}
+.group-82 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.group-62 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-12 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 40px;
+  top: 207.97px;
+}
+.group-12 {
+  width: 138px;
+  height: 18px;
+  position: static;
+}
+.group-63 {
+  width: 138px;
+  height: 18px;
+  position: static;
+}
+.rectangle-13 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 138px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 37px;
+}
+.add-to-cart {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 142px;
+  top: 213.97px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sweet-and-moist-without-the-milk-made-with-ripe-bananas-and-simple-ingredients {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 37px;
+  top: 150px;
+  width: 287px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.non-dairy-banana-bread {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 132px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-14 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-12 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 289.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-20 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-13 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 558.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-25 {
+  width: 350px;
+  height: 159.09px;
+  position: static;
+}
+.pandesal-14 {
+  border-radius: var(--corner-large, 16px);
+  width: 350px;
+  height: 159.09px;
+  position: absolute;
+  left: 26px;
+  top: 827.97px;
+  object-fit: cover;
+  aspect-ratio: 350/159.09;
+}
+.group-16 {
+  width: 134px;
+  height: 18px;
+  position: static;
+}
+.group-64 {
+  width: 134px;
+  height: 18px;
+  position: static;
+}
+.rectangle-14 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 134px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 305.93px;
+}
+.group-21 {
+  width: 75px;
+  height: 18px;
+  position: static;
+}
+.group-65 {
+  width: 75px;
+  height: 18px;
+  position: static;
+}
+.rectangle-15 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 75px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 574.93px;
+}
+.group-26 {
+  width: 108px;
+  height: 18px;
+  position: static;
+}
+.group-66 {
+  width: 108px;
+  height: 18px;
+  position: static;
+}
+.rectangle-16 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 108px;
+  height: 18px;
+  position: absolute;
+  left: 38px;
+  top: 843.93px;
+}
+.non-dairy-loaf-bread {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 309px;
+  width: 114px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tortilla {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 48px;
+  top: 578px;
+  width: 55px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.french-baguette {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 51px;
+  top: 847px;
+  width: 89px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-17 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-22 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 416.93px;
+}
+.rectangle-17 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 416.93px;
+}
+.group-22 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-23 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 685.93px;
+}
+.rectangle-18 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 685.93px;
+}
+.group-27 {
+  width: 350px;
+  height: 108px;
+  position: static;
+}
+.rectangle-24 {
+  background: #fffafa;
+  width: 350px;
+  height: 94.55px;
+  position: absolute;
+  left: 26px;
+  top: 954.93px;
+}
+.rectangle-19 {
+  background: #fffafa;
+  border-radius: 10px;
+  width: 350px;
+  height: 108px;
+  position: absolute;
+  left: 26px;
+  top: 954.93px;
+}
+.everyday-tinapay-walang-gatas-soft-simple-and-perfect-for-sandwiches-or-toast-affordable-filling-and-versatile {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 425.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.thin-soft-flatbread-that-s-dairy-free-and-budget-friendly-perfect-for-wraps-shawarma-or-even-just-dipped-in-sauce {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 694.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.classic-crusty-bread-made-with-only-flour-water-yeast-and-salt-no-dairy-needed {
+  color: var(--labels-vibrant-controls-primary, #404040);
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Medium", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 38px;
+  top: 963.93px;
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.group-18 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-110 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 476.93px;
+}
+.group-23 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-111 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 745.93px;
+}
+.group-28 {
+  width: 322px;
+  height: 35.26px;
+  position: static;
+}
+.rectangle-112 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 322px;
+  height: 35.26px;
+  position: absolute;
+  left: 38px;
+  top: 1014.93px;
+}
+.add-to-cart2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 482.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-to-cart3 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 751.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-to-cart4 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "NotoLoopedThaiUi-Thin", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 100;
+  position: absolute;
+  left: 140px;
+  top: 1020.93px;
+  width: 133px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-15 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.group-67 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-113 {
+  background: #c85a1f;
+  border-radius: 10px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 27.97px;
+}
+.heart2 {
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  left: 337px;
+  top: 28.97px;
+  overflow: hidden;
+}
+._50 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 339px;
+  top: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-19 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-114 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 296.97px;
+}
+._502 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 339px;
+  top: 298px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-24 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-115 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 565.97px;
+}
+._503 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 339px;
+  top: 567px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-29 {
+  width: 35px;
+  height: 24px;
+  position: static;
+}
+.rectangle-116 {
+  background: #c85a1f;
+  border-radius: 5px;
+  width: 35px;
+  height: 24px;
+  position: absolute;
+  left: 334px;
+  top: 834.97px;
+}
+._504 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "InriaSans-Bold", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  position: absolute;
+  left: 339px;
+  top: 836px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-4 {
+  border-radius: 4px;
+  width: 28.08px;
+  height: 32.85px;
+  position: absolute;
+  left: 333.64px;
+  top: 661.96px;
+  transform-origin: 0 0;
+  transform: rotate(121.15deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 28.08/32.85;
+}
+.plus {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 142px;
+  top: 217.97px;
+  overflow: visible;
+}
+.plus3 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 487.97px;
+  overflow: visible;
+}
+.plus4 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 756.97px;
+  overflow: visible;
+}
+.plus5 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 146px;
+  top: 1022.97px;
+  overflow: visible;
+}
+._43-22 {
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 331px;
+  top: 148px;
+  width: 45px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+._43-22-span {
+  color: var(--labels-vibrant-controls-secondary, #8c8c8c);
+}
+._43-22-span2 {
+  color: #da903d;
+}
+._85-43 {
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 331px;
+  top: 417px;
+  width: 45px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+._85-43-span {
+  color: var(--labels-vibrant-controls-secondary, #8c8c8c);
+}
+._85-43-span2 {
+  color: #da903d;
+}
+._70-35 {
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 331px;
+  top: 951px;
+  width: 45px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+._70-35-span {
+  color: var(--labels-vibrant-controls-secondary, #8c8c8c);
+}
+._70-35-span2 {
+  color: #da903d;
+}
+._15-8 {
+  text-align: left;
+  font-family: "NotoLoopedThaiUi-Extrabold", sans-serif;
+  font-size: 10px;
+  line-height: 22px;
+  font-weight: 800;
+  position: absolute;
+  left: 331px;
+  top: 684px;
+  width: 45px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+._15-8-span {
+  color: var(--labels-vibrant-controls-secondary, #8c8c8c);
+}
+._15-8-span2 {
+  color: #da903d;
+}
