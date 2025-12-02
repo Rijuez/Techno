@@ -1,6 +1,7 @@
 /**
  * API Configuration and Helper Functions
  * DoughMain - Bread Rescue Application
+ * Updated with Sale Products Support
  */
 
 const API_BASE_URL = 'api/index.php';
@@ -59,6 +60,10 @@ const AuthAPI = {
 const ProductAPI = {
     async getAll() {
         return await apiRequest('products', 'GET');
+    },
+    
+    async getSaleProducts() {
+        return await apiRequest('sale_products', 'GET');
     },
     
     async getOne(productId) {
@@ -174,4 +179,21 @@ function enableButton(elementId, enable = true) {
     if (button) {
         button.disabled = !enable;
     }
+}
+
+// Image helper functions
+function getProductImage(imageUrl) {
+    if (!imageUrl || imageUrl === '' || imageUrl === null) {
+        return 'assets/placeholder-bread.png';
+    }
+    return imageUrl;
+}
+
+function formatImageUrl(url) {
+    // If it's already a full URL, return as is
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+    }
+    // Otherwise, prepend base URL
+    return url;
 }

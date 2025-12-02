@@ -60,6 +60,11 @@ try {
             $controller->getAllProducts();
             break;
             
+        case 'sale_products':
+            $controller = new ProductController($db);
+            $controller->getSaleProducts();
+            break;
+            
         case 'product':
             $controller = new ProductController($db);
             $controller->getProduct();

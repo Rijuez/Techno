@@ -1,6 +1,7 @@
 /**
  * Main Application Logic
  * DoughMain - Bread Rescue Application
+ * Updated with Image Support and Sale Feature
  */
 
 let currentUser = null;
@@ -9,6 +10,7 @@ let currentFavorites = [];
 let allProducts = [];
 let selectedDeliveryOption = 'delivery';
 let selectedPaymentMethod = 'cod';
+let currentView = 'all'; // 'all' or 'sale'
 
 // Initialize app on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -148,6 +150,26 @@ async function loadProducts() {
     }
 }
 
+async function loadSaleProducts() {
+    showLoading('productsLoading', true);
+    
+    const result = await ProductAPI.getSaleProducts();
+    
+    showLoading('productsLoading', false);
+    
+    if (result.success) {
+        if (result.products.length === 0) {
+            document.getElementById('productList').innerHTML = 
+                '<div class="empty-state"><div class="empty-icon">🏷️</div><div class="empty-text">No items on sale right now</div></div>';
+        } else {
+            renderProducts(result.products);
+        }
+    } else {
+        document.getElementById('productList').innerHTML = 
+            '<div class="empty-state"><div class="empty-icon">😕</div><div class="empty-text">Failed to load sale products</div></div>';
+    }
+}
+
 async function loadCategories() {
     const result = await ProductAPI.getCategories();
     
@@ -159,19 +181,49 @@ async function loadCategories() {
 function renderCategories(categories) {
     const container = document.getElementById('categoriesList');
     
-    container.innerHTML = categories.map(cat => `
-        <div class="category-chip ${cat.name === 'All' ? 'active' : ''}" 
+    // Add Sale category at the beginning
+    let categoriesHtml = `
+        <div class="category-chip ${currentView === 'sale' ? 'active sale-chip' : 'sale-chip'}" 
+             onclick="showSaleProducts()">
+            🏷️ Sale
+        </div>
+    `;
+    
+    categoriesHtml += categories.map(cat => `
+        <div class="category-chip ${cat.name === 'All' && currentView === 'all' ? 'active' : ''}" 
              onclick="filterByCategory('${cat.name}')">
             ${cat.name}
         </div>
     `).join('');
+    
+    container.innerHTML = categoriesHtml;
+}
+
+async function showSaleProducts() {
+    currentView = 'sale';
+    
+    // Update active category
+    document.querySelectorAll('.category-chip').forEach(chip => {
+        chip.classList.remove('active');
+    });
+    document.querySelector('.sale-chip').classList.add('active');
+    
+    // Update section title
+    document.querySelector('.section-title').textContent = 'Sale Items';
+    
+    await loadSaleProducts();
 }
 
 function filterByCategory(categoryName) {
+    currentView = 'all';
+    
     // Update active category
     document.querySelectorAll('.category-chip').forEach(chip => {
         chip.classList.toggle('active', chip.textContent.trim() === categoryName);
     });
+    
+    // Update section title
+    document.querySelector('.section-title').textContent = categoryName === 'All' ? 'Available Today' : categoryName + ' Bread';
     
     // Filter products
     if (categoryName === 'All') {
@@ -190,9 +242,16 @@ function renderProducts(products) {
         return;
     }
     
-    list.innerHTML = products.map(p => `
-        <div class="product-item">
-            <div class="product-image">${p.emoji || '🍞'}</div>
+    list.innerHTML = products.map(p => {
+        const imageUrl = getProductImage(p.image_url);
+        const saleTag = p.is_on_sale ? '<span class="sale-tag">SALE</span>' : '';
+        
+        return `
+        <div class="product-item ${p.is_on_sale ? 'on-sale' : ''}">
+            <div class="product-image-container">
+                <img src="${imageUrl}" alt="${p.name}" class="product-image" onerror="this.src='assets/placeholder-bread.png'">
+                ${saleTag}
+            </div>
             <div class="product-details">
                 <div class="product-header">
                     <div>
@@ -214,14 +273,18 @@ function renderProducts(products) {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 async function searchProducts() {
     const query = document.getElementById('searchInput').value.trim();
     
     if (query.length === 0) {
-        renderProducts(allProducts);
+        if (currentView === 'sale') {
+            await loadSaleProducts();
+        } else {
+            renderProducts(allProducts);
+        }
         return;
     }
     
@@ -280,9 +343,12 @@ function renderCart(cartItems, total) {
     
     summary.style.display = 'block';
     
-    list.innerHTML = cartItems.map(item => `
+    list.innerHTML = cartItems.map(item => {
+        const imageUrl = getProductImage(item.image_url);
+        
+        return `
         <div class="cart-item">
-            <div class="cart-image">${item.emoji || '🍞'}</div>
+            <img src="${imageUrl}" alt="${item.name}" class="cart-image" onerror="this.src='assets/placeholder-bread.png'">
             <div class="cart-info">
                 <div class="product-name">${item.name}</div>
                 <div class="bakery-name">${item.bakery_name}</div>
@@ -295,7 +361,7 @@ function renderCart(cartItems, total) {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
     
     document.getElementById('subtotalAmount').textContent = '₱' + parseFloat(total).toFixed(2);
     document.getElementById('totalAmount').textContent = '₱' + parseFloat(total).toFixed(2);
@@ -352,9 +418,16 @@ function renderFavorites(favorites) {
         return;
     }
     
-    list.innerHTML = favorites.map(p => `
-        <div class="product-item">
-            <div class="product-image">${p.emoji || '🍞'}</div>
+    list.innerHTML = favorites.map(p => {
+        const imageUrl = getProductImage(p.image_url);
+        const saleTag = p.is_on_sale ? '<span class="sale-tag">SALE</span>' : '';
+        
+        return `
+        <div class="product-item ${p.is_on_sale ? 'on-sale' : ''}">
+            <div class="product-image-container">
+                <img src="${imageUrl}" alt="${p.name}" class="product-image" onerror="this.src='assets/placeholder-bread.png'">
+                ${saleTag}
+            </div>
             <div class="product-details">
                 <div class="product-header">
                     <div>
@@ -373,7 +446,7 @@ function renderFavorites(favorites) {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 function isFavorite(productId) {
@@ -504,6 +577,13 @@ async function switchTab(tab) {
         await loadCart();
     } else if (tab === 'favorites') {
         await loadFavorites();
+    } else if (tab === 'browse') {
+        // Reset to all products view
+        if (currentView === 'sale') {
+            currentView = 'all';
+            document.querySelector('.section-title').textContent = 'Available Today';
+            await loadProducts();
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Product Controller
- * Handles product-related operations
+ * Handles product-related operations with image and sale support
  */
 
 class ProductController {
@@ -23,9 +23,12 @@ class ProductController {
                         p.original_price,
                         p.discounted_price,
                         p.discount_percentage,
-                        p.emoji,
+                        p.image_url,
                         p.stock_quantity,
                         p.is_available,
+                        p.is_on_sale,
+                        p.sale_start_date,
+                        p.sale_end_date,
                         b.name as bakery_name,
                         b.address as bakery_address,
                         c.name as category_name
@@ -33,7 +36,7 @@ class ProductController {
                       JOIN bakeries b ON p.bakery_id = b.bakery_id
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE
-                      ORDER BY p.created_at DESC";
+                      ORDER BY p.is_on_sale DESC, p.created_at DESC";
             
             $stmt = $this->db->prepare($query);
             $stmt->execute();
@@ -48,6 +51,52 @@ class ProductController {
             echo json_encode([
                 'success' => false,
                 'message' => 'Error fetching products: ' . $e->getMessage()
+            ]);
+        }
+    }
+    
+    /**
+     * Get products on sale
+     */
+    public function getSaleProducts() {
+        try {
+            $query = "SELECT 
+                        p.product_id,
+                        p.name,
+                        p.description,
+                        p.original_price,
+                        p.discounted_price,
+                        p.discount_percentage,
+                        p.image_url,
+                        p.stock_quantity,
+                        p.is_available,
+                        p.is_on_sale,
+                        p.sale_start_date,
+                        p.sale_end_date,
+                        b.name as bakery_name,
+                        b.address as bakery_address,
+                        c.name as category_name
+                      FROM products p
+                      JOIN bakeries b ON p.bakery_id = b.bakery_id
+                      JOIN categories c ON p.category_id = c.category_id
+                      WHERE p.is_available = TRUE 
+                      AND p.is_on_sale = TRUE
+                      AND (p.sale_end_date IS NULL OR p.sale_end_date >= NOW())
+                      ORDER BY p.discount_percentage DESC, p.created_at DESC";
+            
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            
+            $products = $stmt->fetchAll();
+            
+            echo json_encode([
+                'success' => true,
+                'products' => $products
+            ]);
+        } catch (PDOException $e) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Error fetching sale products: ' . $e->getMessage()
             ]);
         }
     }
@@ -74,9 +123,12 @@ class ProductController {
                         p.original_price,
                         p.discounted_price,
                         p.discount_percentage,
-                        p.emoji,
+                        p.image_url,
                         p.stock_quantity,
                         p.is_available,
+                        p.is_on_sale,
+                        p.sale_start_date,
+                        p.sale_end_date,
                         b.name as bakery_name,
                         b.address as bakery_address,
                         b.contact_number as bakery_contact,
@@ -132,9 +184,10 @@ class ProductController {
                         p.original_price,
                         p.discounted_price,
                         p.discount_percentage,
-                        p.emoji,
+                        p.image_url,
                         p.stock_quantity,
                         p.is_available,
+                        p.is_on_sale,
                         b.name as bakery_name,
                         c.name as category_name
                       FROM products p
@@ -142,7 +195,7 @@ class ProductController {
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE 
                       AND (p.name LIKE :search OR p.description LIKE :search)
-                      ORDER BY p.name";
+                      ORDER BY p.is_on_sale DESC, p.name";
             
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':search', $searchQuery);
@@ -167,7 +220,7 @@ class ProductController {
      */
     public function getCategories() {
         try {
-            $query = "SELECT category_id, name, description 
+            $query = "SELECT category_id, name, description, icon_image 
                      FROM categories 
                      ORDER BY display_order";
             
@@ -210,8 +263,9 @@ class ProductController {
                         p.original_price,
                         p.discounted_price,
                         p.discount_percentage,
-                        p.emoji,
+                        p.image_url,
                         p.stock_quantity,
+                        p.is_on_sale,
                         b.name as bakery_name,
                         c.name as category_name
                       FROM products p
@@ -219,7 +273,7 @@ class ProductController {
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE 
                       AND p.category_id = :category_id
-                      ORDER BY p.name";
+                      ORDER BY p.is_on_sale DESC, p.name";
             
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':category_id', $categoryId);

@@ -1,16 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- Updated Database with Image Support and Sale Feature
+-- Version: 2.0
+-- Date: December 02, 2025
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 02, 2025 at 10:06 AM
--- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- INSTALLATION INSTRUCTIONS:
+-- 1. Create a folder named 'uploads' in your project root
+-- 2. Create a subfolder 'uploads/products' for product images
+-- 3. Import this SQL file to update your database
+-- 4. Replace the old controller and JavaScript files with the updated versions
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +27,8 @@ DELIMITER $$
 -- Procedures
 --
 DROP PROCEDURE IF EXISTS `sp_add_to_cart`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_add_to_cart` (IN `p_user_id` INT, IN `p_product_id` INT, IN `p_quantity` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_add_to_cart` (IN `p_user_id` INT, IN `p_product_id` INT, IN `p_quantity` INT)
+BEGIN
     DECLARE existing_quantity INT DEFAULT 0;
     
     -- Check if item already exists in cart
@@ -48,7 +50,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_add_to_cart` (IN `p_user_id` INT
 END$$
 
 DROP PROCEDURE IF EXISTS `sp_create_order`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_create_order` (IN `p_user_id` INT, IN `p_delivery_option` VARCHAR(20), IN `p_payment_method` VARCHAR(20), IN `p_delivery_address` TEXT, IN `p_contact_number` VARCHAR(20), OUT `p_order_id` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_create_order` (IN `p_user_id` INT, IN `p_delivery_option` VARCHAR(20), IN `p_payment_method` VARCHAR(20), IN `p_delivery_address` TEXT, IN `p_contact_number` VARCHAR(20), OUT `p_order_id` INT)
+BEGIN
     DECLARE v_subtotal DECIMAL(10,2) DEFAULT 0;
     DECLARE v_delivery_fee DECIMAL(10,2) DEFAULT 20.00;
     DECLARE v_total DECIMAL(10,2) DEFAULT 0;
@@ -126,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `bakeries` (
   `description` text,
   `opening_hours` varchar(100) DEFAULT NULL,
   `rating` decimal(2,1) DEFAULT '0.0',
+  `logo_image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `is_active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`bakery_id`),
@@ -136,9 +140,9 @@ CREATE TABLE IF NOT EXISTS `bakeries` (
 -- Dumping data for table `bakeries`
 --
 
-INSERT INTO `bakeries` (`bakery_id`, `name`, `address`, `contact_number`, `email`, `description`, `opening_hours`, `rating`, `created_at`, `is_active`) VALUES
-(1, 'Golden Bakery', '123 Main Street, Manila', '09123456789', 'golden@bakery.com', 'Traditional Filipino bakery since 1985', '6:00 AM - 8:00 PM', 4.5, '2025-11-17 17:04:11', 1),
-(2, 'Sunrise Bakery', '456 Sunset Blvd, Quezon City', '09234567890', 'sunrise@bakery.com', 'Fresh bread daily, specializing in pastries', '5:30 AM - 9:00 PM', 4.7, '2025-11-17 17:04:11', 1);
+INSERT INTO `bakeries` (`bakery_id`, `name`, `address`, `contact_number`, `email`, `description`, `opening_hours`, `rating`, `logo_image`, `created_at`, `is_active`) VALUES
+(1, 'Golden Bakery', '123 Main Street, Manila', '09123456789', 'golden@bakery.com', 'Traditional Filipino bakery since 1985', '6:00 AM - 8:00 PM', 4.5, NULL, '2025-11-17 17:04:11', 1),
+(2, 'Sunrise Bakery', '456 Sunset Blvd, Quezon City', '09234567890', 'sunrise@bakery.com', 'Fresh bread daily, specializing in pastries', '5:30 AM - 9:00 PM', 4.7, NULL, '2025-11-17 17:04:11', 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `product_id` (`product_id`),
   KEY `idx_user` (`user_id`),
   KEY `idx_cart_user_updated` (`user_id`,`updated_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -173,6 +177,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(50) NOT NULL,
   `description` text,
   `display_order` int DEFAULT '0',
+  `icon_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -181,11 +186,11 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `name`, `description`, `display_order`) VALUES
-(1, 'All', 'All bread products', 1),
-(2, 'Pandesal', 'Classic Filipino bread rolls', 2),
-(3, 'Sweet', 'Sweet bread varieties', 3),
-(4, 'Savory', 'Savory bread options', 4);
+INSERT INTO `categories` (`category_id`, `name`, `description`, `display_order`, `icon_image`) VALUES
+(1, 'All', 'All bread products', 1, NULL),
+(2, 'Pandesal', 'Classic Filipino bread rolls', 2, NULL),
+(3, 'Sweet', 'Sweet bread varieties', 3, NULL),
+(4, 'Savory', 'Savory bread options', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -203,16 +208,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   UNIQUE KEY `unique_favorite` (`user_id`,`product_id`),
   KEY `product_id` (`product_id`),
   KEY `idx_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `favorites`
---
-
-INSERT INTO `favorites` (`favorite_id`, `user_id`, `product_id`, `created_at`) VALUES
-(3, 2, 2, '2025-11-17 17:04:11'),
-(4, 2, 4, '2025-11-17 17:04:11'),
-(6, 2, 1, '2025-11-18 05:50:16');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -232,17 +228,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   PRIMARY KEY (`notification_id`),
   KEY `idx_user` (`user_id`),
   KEY `idx_read` (`is_read`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`notification_id`, `user_id`, `title`, `message`, `type`, `is_read`, `created_at`) VALUES
-(2, 1, 'Order Placed Successfully', 'Your order DM-2025-7507 has been placed successfully!', 'order', 0, '2025-11-17 17:41:15'),
-(3, 2, 'Order Placed Successfully', 'Your order DM-2025-4320 has been placed successfully!', 'order', 0, '2025-11-18 05:49:26'),
-(4, 3, 'Order Placed Successfully', 'Your order DM-2025-0901 has been placed successfully!', 'order', 0, '2025-11-18 06:02:06'),
-(5, 3, 'Order Placed Successfully', 'Your order DM-2025-4860 has been placed successfully!', 'order', 0, '2025-11-18 06:26:12');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -274,19 +260,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `idx_status` (`order_status`),
   KEY `idx_ordered_at` (`ordered_at`),
   KEY `idx_orders_user_status` (`user_id`,`order_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `user_id`, `order_number`, `subtotal`, `delivery_fee`, `total_amount`, `delivery_option`, `payment_method`, `payment_status`, `order_status`, `delivery_address`, `contact_number`, `notes`, `ordered_at`, `completed_at`) VALUES
-(1, 1, 'DM-2024-0001', 90.00, 20.00, 110.00, 'delivery', 'cod', 'pending', 'completed', '123 Street, Manila', '09171234567', NULL, '2025-11-17 17:04:11', NULL),
-(2, 2, 'DM-2024-0002', 75.00, 20.00, 95.00, 'pickup', 'gcash', 'pending', 'completed', '456 Avenue, Quezon City', '09181234567', NULL, '2025-11-17 17:04:11', NULL),
-(4, 1, 'DM-2025-7507', 28.00, 20.00, 48.00, 'delivery', 'cod', 'pending', 'pending', '123 Street, Manila', '09171234567', NULL, '2025-11-17 17:41:15', NULL),
-(5, 2, 'DM-2025-4320', 250.00, 20.00, 270.00, 'pickup', 'gcash', 'pending', 'pending', '456 Avenue, Quezon City', '09181234567', NULL, '2025-11-18 05:49:26', NULL),
-(6, 3, 'DM-2025-0901', 137.00, 20.00, 157.00, 'delivery', 'gcash', 'pending', 'pending', '789 Road, Makati', '09191234567', NULL, '2025-11-18 06:02:06', NULL),
-(7, 3, 'DM-2025-4860', 1800.00, 20.00, 1820.00, 'delivery', 'cod', 'pending', 'pending', '789 Road, Makati', '09191234567', NULL, '2025-11-18 06:26:12', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -305,23 +279,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   PRIMARY KEY (`order_item_id`),
   KEY `product_id` (`product_id`),
   KEY `idx_order` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`, `unit_price`, `subtotal`) VALUES
-(1, 1, 1, 2, 30.00, 60.00),
-(2, 1, 2, 1, 25.00, 25.00),
-(3, 2, 3, 1, 35.00, 35.00),
-(4, 2, 4, 1, 40.00, 40.00),
-(6, 4, 5, 1, 28.00, 28.00),
-(7, 5, 1, 5, 30.00, 150.00),
-(8, 5, 2, 4, 25.00, 100.00),
-(10, 6, 2, 1, 25.00, 25.00),
-(11, 6, 5, 4, 28.00, 112.00),
-(13, 7, 1, 60, 30.00, 1800.00);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Triggers `order_items`
@@ -350,9 +308,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   `original_price` decimal(10,2) NOT NULL,
   `discounted_price` decimal(10,2) NOT NULL,
   `discount_percentage` int NOT NULL,
-  `emoji` varchar(10) DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
   `stock_quantity` int DEFAULT '0',
   `expiry_date` date DEFAULT NULL,
+  `is_on_sale` tinyint(1) DEFAULT '0',
+  `sale_start_date` timestamp NULL DEFAULT NULL,
+  `sale_end_date` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `is_available` tinyint(1) DEFAULT '1',
@@ -360,6 +321,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `idx_bakery` (`bakery_id`),
   KEY `idx_category` (`category_id`),
   KEY `idx_available` (`is_available`),
+  KEY `idx_on_sale` (`is_on_sale`),
   KEY `idx_products_available_bakery` (`is_available`,`bakery_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -367,13 +329,13 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `bakery_id`, `category_id`, `name`, `description`, `original_price`, `discounted_price`, `discount_percentage`, `emoji`, `stock_quantity`, `expiry_date`, `created_at`, `updated_at`, `is_available`) VALUES
-(1, 1, 2, 'Pandesal', 'Classic Filipino breakfast bread', 50.00, 30.00, 40, '🥖', -15, '2025-11-19', '2025-11-17 17:04:11', '2025-11-18 06:26:12', 0),
-(2, 1, 2, 'Monay', 'Traditional Filipino bread roll', 40.00, 25.00, 37, '🍞', 25, '2025-11-19', '2025-11-17 17:04:11', '2025-11-18 06:02:06', 1),
-(3, 2, 3, 'Spanish Bread', 'Sweet bread with buttery filling', 60.00, 35.00, 42, '🥐', 40, '2025-11-19', '2025-11-17 17:04:11', '2025-11-17 17:04:11', 1),
-(4, 2, 3, 'Ensaymada', 'Buttery brioche with cheese topping', 70.00, 40.00, 43, '🧈', 25, '2025-11-19', '2025-11-17 17:04:11', '2025-11-17 17:04:11', 1),
-(5, 1, 3, 'Pan de Coco', 'Coconut-filled sweet bread', 45.00, 28.00, 38, '🥥', 28, '2025-11-19', '2025-11-17 17:04:11', '2025-11-18 06:02:06', 1),
-(6, 2, 4, 'Cheese Bread', 'Soft bread with cheese filling', 75.00, 45.00, 40, '🧀', 20, '2025-11-19', '2025-11-17 17:04:11', '2025-11-17 17:04:11', 1);
+INSERT INTO `products` (`product_id`, `bakery_id`, `category_id`, `name`, `description`, `original_price`, `discounted_price`, `discount_percentage`, `image_url`, `stock_quantity`, `expiry_date`, `is_on_sale`, `sale_start_date`, `sale_end_date`, `created_at`, `updated_at`, `is_available`) VALUES
+(1, 1, 2, 'Pandesal', 'Classic Filipino breakfast bread', 50.00, 30.00, 40, 'uploads/products/pandesal.jpg', 50, '2025-12-05', 1, '2025-12-02 00:00:00', '2025-12-05 23:59:59', '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1),
+(2, 1, 2, 'Monay', 'Traditional Filipino bread roll', 40.00, 25.00, 37, 'uploads/products/monay.jpg', 30, '2025-12-05', 1, '2025-12-02 00:00:00', '2025-12-05 23:59:59', '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1),
+(3, 2, 3, 'Spanish Bread', 'Sweet bread with buttery filling', 60.00, 35.00, 42, 'uploads/products/spanish-bread.jpg', 40, '2025-12-05', 1, '2025-12-02 00:00:00', '2025-12-05 23:59:59', '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1),
+(4, 2, 3, 'Ensaymada', 'Buttery brioche with cheese topping', 70.00, 40.00, 43, 'uploads/products/ensaymada.jpg', 25, '2025-12-05', 1, '2025-12-02 00:00:00', '2025-12-05 23:59:59', '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1),
+(5, 1, 3, 'Pan de Coco', 'Coconut-filled sweet bread', 45.00, 28.00, 38, 'uploads/products/pan-de-coco.jpg', 35, '2025-12-05', 0, NULL, NULL, '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1),
+(6, 2, 4, 'Cheese Bread', 'Soft bread with cheese filling', 75.00, 45.00, 40, 'uploads/products/cheese-bread.jpg', 20, '2025-12-05', 0, NULL, NULL, '2025-11-17 17:04:11', '2025-12-02 10:00:00', 1);
 
 --
 -- Triggers `products`
@@ -407,15 +369,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   KEY `order_id` (`order_id`),
   KEY `idx_product` (`product_id`),
   KEY `idx_user` (`user_id`)
-) ;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`review_id`, `user_id`, `product_id`, `order_id`, `rating`, `comment`, `created_at`) VALUES
-(1, 1, 1, 1, 5, 'Fresh and delicious! Great value for money.', '2025-11-17 17:04:11'),
-(2, 2, 3, 2, 4, 'Good taste, would buy again.', '2025-11-17 17:04:11');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -431,164 +385,124 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `address` text,
   `contact_number` varchar(20) DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `is_active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   KEY `idx_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `address`, `contact_number`, `created_at`, `updated_at`, `is_active`) VALUES
-(1, 'Juan Dela Cruz', 'juan@email.com', 'password123', '123 Street, Manila', '09171234567', '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1),
-(2, 'Maria Santos', 'maria@email.com', 'password123', '456 Avenue, Quezon City', '09181234567', '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1),
-(3, 'Pedro Reyes', 'pedro@email.com', 'password123', '789 Road, Makati', '09191234567', '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1);
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `address`, `contact_number`, `profile_image`, `created_at`, `updated_at`, `is_active`) VALUES
+(1, 'Juan Dela Cruz', 'juan@email.com', 'password123', '123 Street, Manila', '09171234567', NULL, '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1),
+(2, 'Maria Santos', 'maria@email.com', 'password123', '456 Avenue, Quezon City', '09181234567', NULL, '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1),
+(3, 'Pedro Reyes', 'pedro@email.com', 'password123', '789 Road, Makati', '09191234567', NULL, '2025-11-17 17:04:11', '2025-11-17 17:16:14', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_cart_summary`
--- (See below for the actual view)
 --
 DROP VIEW IF EXISTS `vw_cart_summary`;
-CREATE TABLE IF NOT EXISTS `vw_cart_summary` (
-`bakery_name` varchar(100)
-,`cart_id` int
-,`discounted_price` decimal(10,2)
-,`product_name` varchar(100)
-,`quantity` int
-,`subtotal` decimal(20,2)
-,`user_id` int
-,`user_name` varchar(100)
-);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cart_summary` AS 
+SELECT 
+    `c`.`cart_id` AS `cart_id`, 
+    `c`.`user_id` AS `user_id`, 
+    `u`.`name` AS `user_name`, 
+    `p`.`name` AS `product_name`, 
+    `p`.`discounted_price` AS `discounted_price`, 
+    `c`.`quantity` AS `quantity`, 
+    (`p`.`discounted_price` * `c`.`quantity`) AS `subtotal`, 
+    `b`.`name` AS `bakery_name` 
+FROM (((`cart` `c` 
+    JOIN `users` `u` ON((`c`.`user_id` = `u`.`user_id`))) 
+    JOIN `products` `p` ON((`c`.`product_id` = `p`.`product_id`))) 
+    JOIN `bakeries` `b` ON((`p`.`bakery_id` = `b`.`bakery_id`)));
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_order_summary`
--- (See below for the actual view)
 --
 DROP VIEW IF EXISTS `vw_order_summary`;
-CREATE TABLE IF NOT EXISTS `vw_order_summary` (
-`customer_email` varchar(150)
-,`customer_name` varchar(100)
-,`delivery_option` enum('delivery','pickup')
-,`order_id` int
-,`order_number` varchar(50)
-,`order_status` enum('pending','confirmed','preparing','ready','delivering','completed','cancelled')
-,`ordered_at` timestamp
-,`payment_status` enum('pending','paid','failed')
-,`total_amount` decimal(10,2)
-,`total_items` bigint
-);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_order_summary` AS 
+SELECT 
+    `o`.`order_id` AS `order_id`, 
+    `o`.`order_number` AS `order_number`, 
+    `u`.`name` AS `customer_name`, 
+    `u`.`email` AS `customer_email`, 
+    `o`.`total_amount` AS `total_amount`, 
+    `o`.`order_status` AS `order_status`, 
+    `o`.`payment_status` AS `payment_status`, 
+    `o`.`delivery_option` AS `delivery_option`, 
+    `o`.`ordered_at` AS `ordered_at`, 
+    COUNT(`oi`.`order_item_id`) AS `total_items` 
+FROM ((`orders` `o` 
+    JOIN `users` `u` ON((`o`.`user_id` = `u`.`user_id`))) 
+    JOIN `order_items` `oi` ON((`o`.`order_id` = `oi`.`order_id`))) 
+GROUP BY `o`.`order_id`;
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_products_full`
--- (See below for the actual view)
 --
 DROP VIEW IF EXISTS `vw_products_full`;
-CREATE TABLE IF NOT EXISTS `vw_products_full` (
-`bakery_address` text
-,`bakery_name` varchar(100)
-,`category_name` varchar(50)
-,`description` text
-,`discount_percentage` int
-,`discounted_price` decimal(10,2)
-,`emoji` varchar(10)
-,`is_available` tinyint(1)
-,`original_price` decimal(10,2)
-,`product_id` int
-,`product_name` varchar(100)
-,`stock_quantity` int
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_cart_summary`
---
-DROP TABLE IF EXISTS `vw_cart_summary`;
-
-DROP VIEW IF EXISTS `vw_cart_summary`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cart_summary`  AS SELECT `c`.`cart_id` AS `cart_id`, `c`.`user_id` AS `user_id`, `u`.`name` AS `user_name`, `p`.`name` AS `product_name`, `p`.`discounted_price` AS `discounted_price`, `c`.`quantity` AS `quantity`, (`p`.`discounted_price` * `c`.`quantity`) AS `subtotal`, `b`.`name` AS `bakery_name` FROM (((`cart` `c` join `users` `u` on((`c`.`user_id` = `u`.`user_id`))) join `products` `p` on((`c`.`product_id` = `p`.`product_id`))) join `bakeries` `b` on((`p`.`bakery_id` = `b`.`bakery_id`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_order_summary`
---
-DROP TABLE IF EXISTS `vw_order_summary`;
-
-DROP VIEW IF EXISTS `vw_order_summary`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_order_summary`  AS SELECT `o`.`order_id` AS `order_id`, `o`.`order_number` AS `order_number`, `u`.`name` AS `customer_name`, `u`.`email` AS `customer_email`, `o`.`total_amount` AS `total_amount`, `o`.`order_status` AS `order_status`, `o`.`payment_status` AS `payment_status`, `o`.`delivery_option` AS `delivery_option`, `o`.`ordered_at` AS `ordered_at`, count(`oi`.`order_item_id`) AS `total_items` FROM ((`orders` `o` join `users` `u` on((`o`.`user_id` = `u`.`user_id`))) join `order_items` `oi` on((`o`.`order_id` = `oi`.`order_id`))) GROUP BY `o`.`order_id` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_products_full`
---
-DROP TABLE IF EXISTS `vw_products_full`;
-
-DROP VIEW IF EXISTS `vw_products_full`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_products_full`  AS SELECT `p`.`product_id` AS `product_id`, `p`.`name` AS `product_name`, `p`.`description` AS `description`, `p`.`original_price` AS `original_price`, `p`.`discounted_price` AS `discounted_price`, `p`.`discount_percentage` AS `discount_percentage`, `p`.`emoji` AS `emoji`, `p`.`stock_quantity` AS `stock_quantity`, `p`.`is_available` AS `is_available`, `b`.`name` AS `bakery_name`, `b`.`address` AS `bakery_address`, `c`.`name` AS `category_name` FROM ((`products` `p` join `bakeries` `b` on((`p`.`bakery_id` = `b`.`bakery_id`))) join `categories` `c` on((`p`.`category_id` = `c`.`category_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_products_full` AS 
+SELECT 
+    `p`.`product_id` AS `product_id`, 
+    `p`.`name` AS `product_name`, 
+    `p`.`description` AS `description`, 
+    `p`.`original_price` AS `original_price`, 
+    `p`.`discounted_price` AS `discounted_price`, 
+    `p`.`discount_percentage` AS `discount_percentage`, 
+    `p`.`image_url` AS `image_url`, 
+    `p`.`stock_quantity` AS `stock_quantity`, 
+    `p`.`is_available` AS `is_available`, 
+    `p`.`is_on_sale` AS `is_on_sale`,
+    `b`.`name` AS `bakery_name`, 
+    `b`.`address` AS `bakery_address`, 
+    `c`.`name` AS `category_name` 
+FROM ((`products` `p` 
+    JOIN `bakeries` `b` ON((`p`.`bakery_id` = `b`.`bakery_id`))) 
+    JOIN `categories` `c` ON((`p`.`category_id` = `c`.`category_id`)));
 
 --
 -- Constraints for dumped tables
 --
 
---
--- Constraints for table `cart`
---
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `favorites`
---
 ALTER TABLE `favorites`
   ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `notifications`
---
 ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `orders`
---
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `order_items`
---
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `products`
---
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`bakery_id`) REFERENCES `bakeries` (`bakery_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `reviews`
---
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `reviews_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
