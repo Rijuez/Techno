@@ -278,9 +278,13 @@ function renderProducts(products) {
 }
 
 async function searchProducts() {
+    console.log('🔍 Search function called');
+    
     const query = document.getElementById('searchInput').value.trim();
+    console.log('📝 Search query:', query);
     
     if (query.length === 0) {
+        console.log('🔄 Query empty, showing all products');
         if (currentView === 'sale') {
             await loadSaleProducts();
         } else {
@@ -289,12 +293,22 @@ async function searchProducts() {
         return;
     }
     
-    if (query.length < 2) return;
+    if (query.length < 2) {
+        console.log('⏳ Query too short (< 2 chars), waiting...');
+        return;
+    }
     
+    console.log('🌐 Calling API...');
     const result = await ProductAPI.search(query);
+    console.log('✅ API Response:', result);
     
     if (result.success) {
+        console.log('📦 Products found:', result.products.length);
+        console.log('📋 Products data:', result.products);
         renderProducts(result.products);
+        console.log('✨ Render complete');
+    } else {
+        console.log('❌ API returned success: false');
     }
 }
 

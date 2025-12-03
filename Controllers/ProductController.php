@@ -1,8 +1,6 @@
 <?php
-/**
- * Product Controller
- * Handles product-related operations with image and sale support
- */
+
+require_once __DIR__ . '/../config/database.php';
 
 class ProductController {
     private $db;
@@ -12,7 +10,7 @@ class ProductController {
     }
     
     /**
-     * Get all available products
+     * Get all products
      */
     public function getAllProducts() {
         try {
@@ -30,17 +28,14 @@ class ProductController {
                         p.sale_start_date,
                         p.sale_end_date,
                         b.name as bakery_name,
-                        b.address as bakery_address,
                         c.name as category_name
                       FROM products p
                       JOIN bakeries b ON p.bakery_id = b.bakery_id
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE
-                      ORDER BY p.is_on_sale DESC, p.created_at DESC";
+                      ORDER BY p.is_on_sale DESC, p.name";
             
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-            
+            $stmt = $this->db->query($query);
             $products = $stmt->fetchAll();
             
             echo json_encode([
@@ -50,7 +45,7 @@ class ProductController {
         } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Error fetching products: ' . $e->getMessage()
+                'message' => 'Error loading products: ' . $e->getMessage()
             ]);
         }
     }
@@ -74,19 +69,15 @@ class ProductController {
                         p.sale_start_date,
                         p.sale_end_date,
                         b.name as bakery_name,
-                        b.address as bakery_address,
                         c.name as category_name
                       FROM products p
                       JOIN bakeries b ON p.bakery_id = b.bakery_id
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE 
                       AND p.is_on_sale = TRUE
-                      AND (p.sale_end_date IS NULL OR p.sale_end_date >= NOW())
-                      ORDER BY p.discount_percentage DESC, p.created_at DESC";
+                      ORDER BY p.discount_percentage DESC, p.name";
             
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-            
+            $stmt = $this->db->query($query);
             $products = $stmt->fetchAll();
             
             echo json_encode([
@@ -96,7 +87,7 @@ class ProductController {
         } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Error fetching sale products: ' . $e->getMessage()
+                'message' => 'Error loading sale products: ' . $e->getMessage()
             ]);
         }
     }
@@ -157,13 +148,13 @@ class ProductController {
         } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Error fetching product: ' . $e->getMessage()
+                'message' => 'Error loading product: ' . $e->getMessage()
             ]);
         }
     }
     
     /**
-     * Search products
+     * Search products - FIXED VERSION
      */
     public function searchProducts() {
         if (!isset($_GET['query'])) {
@@ -177,6 +168,7 @@ class ProductController {
         $searchQuery = '%' . $_GET['query'] . '%';
         
         try {
+            // FIXED: Use unique parameter names for each placeholder
             $query = "SELECT 
                         p.product_id,
                         p.name,
@@ -194,11 +186,12 @@ class ProductController {
                       JOIN bakeries b ON p.bakery_id = b.bakery_id
                       JOIN categories c ON p.category_id = c.category_id
                       WHERE p.is_available = TRUE 
-                      AND (p.name LIKE :search OR p.description LIKE :search)
+                      AND (p.name LIKE :search1 OR p.description LIKE :search2)
                       ORDER BY p.is_on_sale DESC, p.name";
             
             $stmt = $this->db->prepare($query);
-            $stmt->bindParam(':search', $searchQuery);
+            $stmt->bindParam(':search1', $searchQuery);
+            $stmt->bindParam(':search2', $searchQuery);
             $stmt->execute();
             
             $products = $stmt->fetchAll();
@@ -220,13 +213,8 @@ class ProductController {
      */
     public function getCategories() {
         try {
-            $query = "SELECT category_id, name, description, icon_image 
-                     FROM categories 
-                     ORDER BY display_order";
-            
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-            
+            $query = "SELECT category_id, name FROM categories ORDER BY name";
+            $stmt = $this->db->query($query);
             $categories = $stmt->fetchAll();
             
             echo json_encode([
@@ -236,7 +224,7 @@ class ProductController {
         } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Error fetching categories: ' . $e->getMessage()
+                'message' => 'Error loading categories: ' . $e->getMessage()
             ]);
         }
     }
@@ -265,6 +253,7 @@ class ProductController {
                         p.discount_percentage,
                         p.image_url,
                         p.stock_quantity,
+                        p.is_available,
                         p.is_on_sale,
                         b.name as bakery_name,
                         c.name as category_name
@@ -288,9 +277,8 @@ class ProductController {
         } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Error fetching products: ' . $e->getMessage()
+                'message' => 'Error loading products: ' . $e->getMessage()
             ]);
         }
     }
 }
-?>
