@@ -56,10 +56,10 @@
         }
 
         .logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
         .logo-text h1 {
             font-size: 32px;
@@ -189,17 +189,17 @@
         }
 
         .top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.app-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 8px;
-}
+        .app-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
 
         .profile-icon {
             width: 40px;
@@ -290,16 +290,31 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
-        .product-image {
+        .product-image-container {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #FFE5B4 0%, #FFD700 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
+            overflow: hidden;
+            position: relative;
             flex-shrink: 0;
+            background: #f5f5f5;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .product-image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image-container:active {
+            transform: scale(0.98);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .product-details {
@@ -404,6 +419,7 @@
             justify-content: space-around;
             padding: 12px 0;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
         }
 
         .nav-item {
@@ -796,6 +812,288 @@
         .success-message.active {
             display: block;
         }
+
+        /* ===== PRODUCT DETAIL MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .product-modal {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 340px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-image-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-image-container .sale-tag {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.5);
+        }
+
+        .modal-product-info {
+            padding: 20px;
+        }
+
+        .modal-product-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .modal-bakery-name {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .modal-product-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            min-height: 60px;
+        }
+
+        .modal-price-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .modal-current-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #FF6B35;
+        }
+
+        .modal-original-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .modal-stock-info {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .modal-stock-info .in-stock {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .modal-stock-info .low-stock {
+            color: #FF9800;
+            font-weight: 600;
+        }
+
+        .modal-stock-info .out-of-stock {
+            color: #f44336;
+            font-weight: 600;
+        }
+
+        .modal-quantity-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #FFF5F0;
+            border-radius: 12px;
+        }
+
+        .modal-quantity-section label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-selector .qty-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #FF6B35;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 600;
+            color: #FF6B35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .quantity-selector .qty-btn:hover {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .quantity-selector .qty-value {
+            font-size: 20px;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .modal-total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .modal-total-label {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .modal-total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF6B35;
+        }
+
+        .modal-add-cart-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #FF8C42, #FF6B35);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-add-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .modal-add-cart-btn:active {
+            transform: translateY(0);
+        }
+
+        .modal-add-cart-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Click hint on product image */
+        .click-hint {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .product-image-container:hover .click-hint {
+            opacity: 1;
+        }
     </style>
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/additional-styles.css">
@@ -804,15 +1102,15 @@
     <div class="phone-frame">
         <!-- Sign In Screen -->
         <div id="signinScreen" class="auth-screen active">
-    <div class="logo-section">
-        <div class="logo-icon" style="background: transparent; box-shadow: none;">
-            <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;"> 
-        </div>
-        <div class="logo-text">
-            <h1>DoughMain</h1>
-            <p>Turning yesterday's bread into tomorrow's hope</p>
-        </div>
-    </div>
+            <div class="logo-section">
+                <div class="logo-icon" style="background: transparent; box-shadow: none;">
+                    <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;"> 
+                </div>
+                <div class="logo-text">
+                    <h1>DoughMain</h1>
+                    <p>Turning yesterday's bread into tomorrow's hope</p>
+                </div>
+            </div>
             
             <div class="error-message" id="loginError"></div>
             <div class="success-message" id="loginSuccess"></div>
@@ -838,12 +1136,12 @@
 
         <!-- Sign Up Screen -->
         <div id="signupScreen" class="auth-screen">
-    <div class="logo-section">
-        <div class="logo-icon" style="background: transparent; box-shadow: none;">
-            <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;">
-        </div>
-        <div class="logo-text">
-            <h1>Create Account</h1>
+            <div class="logo-section">
+                <div class="logo-icon" style="background: transparent; box-shadow: none;">
+                    <img src="assets/logo.png" alt="Logo" style="width: 200px; height: 220px;">
+                </div>
+                <div class="logo-text">
+                    <h1>Create Account</h1>
                     <p>Join us in reducing food waste</p>
                 </div>
             </div>
@@ -889,13 +1187,13 @@
         <div id="appScreen" class="app-screen">
             <!-- Browse Tab -->
             <div id="browseTab" class="tab-content active">
-    <div class="top-bar">
-        <h2>Browse</h2>
-        <div class="top-bar-right">
-            <img src="assets/logo.png" alt="DoughMain" class="app-logo">
-            <div class="profile-icon" onclick="switchTab('profile')">👤</div>
-        </div>
-    </div>
+                <div class="top-bar">
+                    <h2>Browse</h2>
+                    <div class="top-bar-right">
+                        <img src="assets/logo.png" alt="DoughMain" class="app-logo">
+                        <div class="profile-icon" onclick="switchTab('profile')">👤</div>
+                    </div>
+                </div>
                 
                 <div class="search-section">
                     <div class="search-box">
@@ -954,228 +1252,226 @@
                 </div>
             </div>
 
-           <!-- Profile Tab -->
-<div id="profileTab" class="tab-content">
-    <div class="profile-header">
-        <div class="profile-avatar">👤</div>
-        <div class="profile-name" id="profileName">User Name</div>
-        <div class="profile-email" id="profileEmail">user@email.com</div>
-    </div>
-    
-    <div class="profile-menu">
-        <div class="menu-item" onclick="viewOrders()">
-            <div class="menu-item-left">
-                <span class="menu-icon">📋</span>
-                <span class="menu-text">Order History</span>
+            <!-- Profile Tab -->
+            <div id="profileTab" class="tab-content">
+                <div class="profile-header">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-name" id="profileName">User Name</div>
+                    <div class="profile-email" id="profileEmail">user@email.com</div>
+                </div>
+                
+                <div class="profile-menu">
+                    <div class="menu-item" onclick="viewOrders()">
+                        <div class="menu-item-left">
+                            <span class="menu-icon">📋</span>
+                            <span class="menu-text">Order History</span>
+                        </div>
+                        <span class="menu-arrow">›</span>
+                    </div>
+                    
+                    <div class="menu-item" onclick="showProfileSection('addresses')">  
+                        <div class="menu-item-left">
+                            <span class="menu-icon">📍</span>
+                            <span class="menu-text">Addresses</span>
+                        </div>
+                        <span class="menu-arrow">›</span>
+                    </div>
+                    
+                    <div class="menu-item" onclick="showProfileSection('payment')">  
+                        <div class="menu-item-left">
+                            <span class="menu-icon">💳</span>
+                            <span class="menu-text">Payment Methods</span>
+                        </div>
+                        <span class="menu-arrow">›</span>
+                    </div>
+                    
+                    <div class="menu-item" onclick="showProfileSection('settings')">  
+                        <div class="menu-item-left">
+                            <span class="menu-icon">⚙️</span>
+                            <span class="menu-text">Settings</span>
+                        </div>
+                        <span class="menu-arrow">›</span>
+                    </div>
+                </div>
+                
+                <button class="logout-btn" onclick="logout()">Sign Out</button>
             </div>
-            <span class="menu-arrow">›</span>
-        </div>
-        
-        <div class="menu-item" onclick="showProfileSection('addresses')">  
-            <div class="menu-item-left">
-                <span class="menu-icon">📍</span>
-                <span class="menu-text">Addresses</span>
-            </div>
-            <span class="menu-arrow">›</span>
-        </div>
-        
-        <div class="menu-item" onclick="showProfileSection('payment')">  
-            <div class="menu-item-left">
-                <span class="menu-icon">💳</span>
-                <span class="menu-text">Payment Methods</span>
-            </div>
-            <span class="menu-arrow">›</span>
-        </div>
-        
-        <div class="menu-item" onclick="showProfileSection('settings')">  
-            <div class="menu-item-left">
-                <span class="menu-icon">⚙️</span>
-                <span class="menu-text">Settings</span>
-            </div>
-            <span class="menu-arrow">›</span>
-        </div>
-    </div>
-    
-    <button class="logout-btn" onclick="logout()">Sign Out</button>
-</div>
 
-            <!-- PROFILE SECTIONS - Add these after the profileTab closing </div> -->
+            <!-- Addresses Section -->
+            <div id="addressesSection" class="profile-section tab-content">
+                <div class="top-bar">
+                    <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+                    <h2>My Addresses</h2>
+                    <div style="width: 40px;"></div>
+                </div>
+                
+                <div class="profile-section-content">
+                    <div class="error-message" id="addressError"></div>
+                    <div class="success-message" id="addressSuccess"></div>
+                    
+                    <div class="form-section">
+                        <h3>Delivery Address</h3>
+                        <div class="input-group">
+                            <label>Full Address</label>
+                            <textarea id="deliveryAddress" rows="3" placeholder="Enter complete delivery address"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Contact Number</label>
+                            <input type="tel" id="deliveryContact" placeholder="09xx xxx xxxx">
+                        </div>
+                        <button class="btn-auth btn-primary" onclick="saveAddress()">Save Address</button>
+                    </div>
+                </div>
+            </div>
 
-<!-- Addresses Section -->
-<div id="addressesSection" class="profile-section tab-content">
-    <div class="top-bar">
-        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
-        <h2>My Addresses</h2>
-        <div style="width: 40px;"></div>
-    </div>
-    
-    <div class="profile-section-content">
-        <div class="error-message" id="addressError"></div>
-        <div class="success-message" id="addressSuccess"></div>
-        
-        <div class="form-section">
-            <h3>Delivery Address</h3>
-            <div class="input-group">
-                <label>Full Address</label>
-                <textarea id="deliveryAddress" rows="3" placeholder="Enter complete delivery address"></textarea>
+            <!-- Payment Methods Section -->
+            <div id="paymentSection" class="profile-section tab-content">
+                <div class="top-bar">
+                    <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+                    <h2>Payment Methods</h2>
+                    <div style="width: 40px;"></div>
+                </div>
+                
+                <div class="profile-section-content">
+                    <div class="error-message" id="paymentError"></div>
+                    <div class="success-message" id="paymentSuccess"></div>
+                    
+                    <div class="form-section">
+                        <h3>Preferred Payment Method</h3>
+                        <div class="radio-group">
+                            <div class="radio-option selected" data-value="cod" onclick="selectPreferredPayment(this)">
+                                <div class="radio-circle"></div>
+                                <div>
+                                    <div style="font-weight: 600;">Cash on Delivery (COD)</div>
+                                    <div style="font-size: 12px; color: #999;">Pay when you receive your order</div>
+                                </div>
+                            </div>
+                            <div class="radio-option" data-value="gcash" onclick="selectPreferredPayment(this)">
+                                <div class="radio-circle"></div>
+                                <div>
+                                    <div style="font-weight: 600;">GCash</div>
+                                    <div style="font-size: 12px; color: #999;">Digital wallet payment</div>
+                                </div>
+                            </div>
+                            <div class="radio-option" data-value="card" onclick="selectPreferredPayment(this)">
+                                <div class="radio-circle"></div>
+                                <div>
+                                    <div style="font-weight: 600;">Credit/Debit Card</div>
+                                    <div style="font-size: 12px; color: #999;">Pay with your card</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="gcashSection" style="display: none; margin-top: 20px;">
+                            <div class="input-group">
+                                <label>GCash Number</label>
+                                <input type="tel" id="gcashNumber" placeholder="09xx xxx xxxx">
+                            </div>
+                        </div>
+                        
+                        <div id="cardSection" style="display: none; margin-top: 20px;">
+                            <div class="input-group">
+                                <label>Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <div class="input-group" style="flex: 1;">
+                                    <label>Expiry Date</label>
+                                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="input-group" style="flex: 1;">
+                                    <label>CVV</label>
+                                    <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-auth btn-primary" onclick="savePaymentMethod()">Save Payment Method</button>
+                    </div>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Contact Number</label>
-                <input type="tel" id="deliveryContact" placeholder="09xx xxx xxxx">
-            </div>
-            <button class="btn-auth btn-primary" onclick="saveAddress()">Save Address</button>
-        </div>
-    </div>
-</div>
 
-<!-- Payment Methods Section -->
-<div id="paymentSection" class="profile-section tab-content">
-    <div class="top-bar">
-        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
-        <h2>Payment Methods</h2>
-        <div style="width: 40px;"></div>
-    </div>
-    
-    <div class="profile-section-content">
-        <div class="error-message" id="paymentError"></div>
-        <div class="success-message" id="paymentSuccess"></div>
-        
-        <div class="form-section">
-            <h3>Preferred Payment Method</h3>
-            <div class="radio-group">
-                <div class="radio-option selected" data-value="cod" onclick="selectPreferredPayment(this)">
-                    <div class="radio-circle"></div>
-                    <div>
-                        <div style="font-weight: 600;">Cash on Delivery (COD)</div>
-                        <div style="font-size: 12px; color: #999;">Pay when you receive your order</div>
+            <!-- Settings Section -->
+            <div id="settingsSection" class="profile-section tab-content">
+                <div class="top-bar">
+                    <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
+                    <h2>Settings</h2>
+                    <div style="width: 40px;"></div>
+                </div>
+                
+                <div class="profile-section-content">
+                    <div class="error-message" id="settingsError"></div>
+                    <div class="success-message" id="settingsSuccess"></div>
+                    
+                    <!-- Profile Information -->
+                    <div class="form-section">
+                        <h3>Profile Information</h3>
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="settingsName" placeholder="Enter your name">
+                        </div>
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="settingsEmail" placeholder="Enter your email" disabled style="background: #f5f5f5;">
+                        </div>
+                        <button class="btn-auth btn-primary" onclick="updateProfileInfo()">Update Profile</button>
+                    </div>
+                    
+                    <!-- Change Password -->
+                    <div class="form-section" style="margin-top: 15px;">
+                        <h3>Change Password</h3>
+                        <div class="input-group">
+                            <label>Current Password</label>
+                            <input type="password" id="currentPassword" placeholder="Enter current password">
+                        </div>
+                        <div class="input-group">
+                            <label>New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="input-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                        </div>
+                        <button class="btn-auth btn-primary" onclick="changePassword()">Change Password</button>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="form-section" style="margin-top: 15px;">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <div>
+                                <div style="font-weight: 600; margin-bottom: 5px;">Order Updates</div>
+                                <div style="font-size: 12px; color: #999;">Get notified about your order status</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifOrders" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div>
+                                <div style="font-weight: 600; margin-bottom: 5px;">Promotions</div>
+                                <div style="font-size: 12px; color: #999;">Receive special offers and discounts</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifPromos" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div>
+                                <div style="font-weight: 600; margin-bottom: 5px;">New Products</div>
+                                <div style="font-size: 12px; color: #999;">Stay updated on new bread items</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifProducts" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <button class="btn-auth btn-primary" onclick="saveNotificationSettings()">Save Settings</button>
                     </div>
                 </div>
-                <div class="radio-option" data-value="gcash" onclick="selectPreferredPayment(this)">
-                    <div class="radio-circle"></div>
-                    <div>
-                        <div style="font-weight: 600;">GCash</div>
-                        <div style="font-size: 12px; color: #999;">Digital wallet payment</div>
-                    </div>
-                </div>
-                <div class="radio-option" data-value="card" onclick="selectPreferredPayment(this)">
-                    <div class="radio-circle"></div>
-                    <div>
-                        <div style="font-weight: 600;">Credit/Debit Card</div>
-                        <div style="font-size: 12px; color: #999;">Pay with your card</div>
-                    </div>
-                </div>
             </div>
-            
-            <div id="gcashSection" style="display: none; margin-top: 20px;">
-                <div class="input-group">
-                    <label>GCash Number</label>
-                    <input type="tel" id="gcashNumber" placeholder="09xx xxx xxxx">
-                </div>
-            </div>
-            
-            <div id="cardSection" style="display: none; margin-top: 20px;">
-                <div class="input-group">
-                    <label>Card Number</label>
-                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-                </div>
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-group" style="flex: 1;">
-                        <label>Expiry Date</label>
-                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
-                    </div>
-                    <div class="input-group" style="flex: 1;">
-                        <label>CVV</label>
-                        <input type="text" id="cardCVV" placeholder="123" maxlength="3">
-                    </div>
-                </div>
-            </div>
-            
-            <button class="btn-auth btn-primary" onclick="savePaymentMethod()">Save Payment Method</button>
-        </div>
-    </div>
-</div>
-
-<!-- Settings Section -->
-<div id="settingsSection" class="profile-section tab-content">
-    <div class="top-bar">
-        <span onclick="backToProfile()" style="cursor: pointer; font-size: 24px;">←</span>
-        <h2>Settings</h2>
-        <div style="width: 40px;"></div>
-    </div>
-    
-    <div class="profile-section-content">
-        <div class="error-message" id="settingsError"></div>
-        <div class="success-message" id="settingsSuccess"></div>
-        
-        <!-- Profile Information -->
-        <div class="form-section">
-            <h3>Profile Information</h3>
-            <div class="input-group">
-                <label>Full Name</label>
-                <input type="text" id="settingsName" placeholder="Enter your name">
-            </div>
-            <div class="input-group">
-                <label>Email Address</label>
-                <input type="email" id="settingsEmail" placeholder="Enter your email" disabled style="background: #f5f5f5;">
-            </div>
-            <button class="btn-auth btn-primary" onclick="updateProfileInfo()">Update Profile</button>
-        </div>
-        
-        <!-- Change Password -->
-        <div class="form-section" style="margin-top: 15px;">
-            <h3>Change Password</h3>
-            <div class="input-group">
-                <label>Current Password</label>
-                <input type="password" id="currentPassword" placeholder="Enter current password">
-            </div>
-            <div class="input-group">
-                <label>New Password</label>
-                <input type="password" id="newPassword" placeholder="Enter new password">
-            </div>
-            <div class="input-group">
-                <label>Confirm New Password</label>
-                <input type="password" id="confirmPassword" placeholder="Confirm new password">
-            </div>
-            <button class="btn-auth btn-primary" onclick="changePassword()">Change Password</button>
-        </div>
-        
-        <!-- Notifications -->
-        <div class="form-section" style="margin-top: 15px;">
-            <h3>Notifications</h3>
-            <div class="setting-item">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 5px;">Order Updates</div>
-                    <div style="font-size: 12px; color: #999;">Get notified about your order status</div>
-                </div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="notifOrders" checked>
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-            <div class="setting-item">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 5px;">Promotions</div>
-                    <div style="font-size: 12px; color: #999;">Receive special offers and discounts</div>
-                </div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="notifPromos" checked>
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-            <div class="setting-item">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 5px;">New Products</div>
-                    <div style="font-size: 12px; color: #999;">Stay updated on new bread items</div>
-                </div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="notifProducts" checked>
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-            <button class="btn-auth btn-primary" onclick="saveNotificationSettings()">Save Settings</button>
-        </div>
-    </div>
-</div>
 
             <!-- Bottom Navigation -->
             <div class="bottom-nav">
@@ -1194,6 +1490,45 @@
                 <div class="nav-item" onclick="switchTab('profile')">
                     <div class="nav-icon">👤</div>
                     <div class="nav-label">Profile</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="productDetailModal" class="modal-overlay" style="display: none;">
+            <div class="product-modal">
+                <div class="modal-close" onclick="closeProductDetail()">×</div>
+                <div class="modal-image-container">
+                    <img id="modalProductImage" src="" alt="Product" class="modal-product-image">
+                    <span id="modalSaleTag" class="sale-tag" style="display: none;">SALE</span>
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modalProductName" class="modal-product-name"></h2>
+                    <p id="modalBakeryName" class="modal-bakery-name"></p>
+                    <p id="modalProductDescription" class="modal-product-description"></p>
+                    <div class="modal-price-section">
+                        <span id="modalCurrentPrice" class="modal-current-price"></span>
+                        <span id="modalOriginalPrice" class="modal-original-price"></span>
+                        <span id="modalDiscount" class="discount-badge"></span>
+                    </div>
+                    <div class="modal-stock-info">
+                        <span id="modalStockStatus"></span>
+                    </div>
+                    <div class="modal-quantity-section">
+                        <label>Quantity:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="decreaseModalQuantity()">−</button>
+                            <span id="modalQuantity" class="qty-value">1</span>
+                            <button class="qty-btn" onclick="increaseModalQuantity()">+</button>
+                        </div>
+                    </div>
+                    <div class="modal-total-section">
+                        <span class="modal-total-label">Total:</span>
+                        <span id="modalTotalPrice" class="modal-total-price"></span>
+                    </div>
+                    <button id="modalAddToCartBtn" class="modal-add-cart-btn" onclick="addToCartFromModal()">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>

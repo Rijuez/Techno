@@ -204,7 +204,7 @@ async function savePaymentMethod() {
         }
         
         // Mask card number (show only last 4 digits)
-        const maskedCard = '•••• •••• •••• ' + cardNumber.slice(-4);
+        const maskedCard = '**** **** **** ' + cardNumber.slice(-4);
         userPreferences.card_number = maskedCard;
         userPreferences.card_expiry = cardExpiry;
         // Don't save CVV for security
@@ -362,7 +362,7 @@ function formatPhoneNumber(phone) {
 
 function maskCardNumber(cardNumber) {
     if (cardNumber.length < 4) return cardNumber;
-    return '•••• •••• •••• ' + cardNumber.slice(-4);
+    return '**** **** **** ' + cardNumber.slice(-4);
 }
 
 // Export functions for use in main app

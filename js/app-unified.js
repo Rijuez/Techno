@@ -2,6 +2,7 @@
  * Main Application Logic - UNIFIED VERSION
  * DoughMain - Handles both Customer and Bakery login
  * Automatically redirects to correct interface
+ * Updated with Product Detail Modal functionality
  */
 
 let currentUser = null;
@@ -11,6 +12,10 @@ let allProducts = [];
 let selectedDeliveryOption = 'delivery';
 let selectedPaymentMethod = 'cod';
 let currentView = 'all';
+
+// Modal state
+let selectedProduct = null;
+let modalQuantity = 1;
 
 // Initialize app on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -29,6 +34,20 @@ async function init() {
     } catch (error) {
         console.log('No active session');
     }
+    
+    // Setup modal close on overlay click
+    document.getElementById('productDetailModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeProductDetail();
+        }
+    });
+    
+    // Setup keyboard escape to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeProductDetail();
+        }
+    });
 }
 
 async function loadAppData() {
@@ -253,9 +272,10 @@ function renderProducts(products) {
         
         return `
         <div class="product-item ${p.is_on_sale ? 'on-sale' : ''}">
-            <div class="product-image-container">
+            <div class="product-image-container" onclick="openProductDetail(${p.product_id})">
                 <img src="${imageUrl}" alt="${p.name}" class="product-image" onerror="this.src='assets/placeholder-bread.png'">
                 ${saleTag}
+                <span class="click-hint">Tap for details</span>
             </div>
             <div class="product-details">
                 <div class="product-header">
@@ -301,6 +321,136 @@ async function searchProducts() {
     
     if (result.success) {
         renderProducts(result.products);
+    }
+}
+
+// ===== PRODUCT DETAIL MODAL FUNCTIONS =====
+
+function openProductDetail(productId) {
+    // Find product from allProducts or currentFavorites
+    let product = allProducts.find(p => p.product_id === productId);
+    if (!product) {
+        product = currentFavorites.find(p => p.product_id === productId);
+    }
+    
+    if (!product) {
+        console.error('Product not found:', productId);
+        return;
+    }
+    
+    selectedProduct = product;
+    modalQuantity = 1;
+    
+    // Populate modal with product details
+    const imageUrl = getProductImage(product.image_url);
+    document.getElementById('modalProductImage').src = imageUrl;
+    document.getElementById('modalProductImage').onerror = function() {
+        this.src = 'assets/placeholder-bread.png';
+    };
+    
+    document.getElementById('modalProductName').textContent = product.name;
+    document.getElementById('modalBakeryName').textContent = product.bakery_name;
+    
+    // Description - show placeholder if empty
+    const description = product.description || 'Delicious freshly baked bread from ' + product.bakery_name + '. Perfect for any meal or snack!';
+    document.getElementById('modalProductDescription').textContent = description;
+    
+    // Prices
+    document.getElementById('modalCurrentPrice').textContent = '₱' + parseFloat(product.discounted_price).toFixed(2);
+    document.getElementById('modalOriginalPrice').textContent = '₱' + parseFloat(product.original_price).toFixed(2);
+    document.getElementById('modalDiscount').textContent = '-' + product.discount_percentage + '%';
+    
+    // Sale tag
+    const saleTag = document.getElementById('modalSaleTag');
+    saleTag.style.display = product.is_on_sale ? 'block' : 'none';
+    
+    // Stock status
+    const stockStatus = document.getElementById('modalStockStatus');
+    const stock = parseInt(product.stock_quantity) || 0;
+    if (stock > 10) {
+        stockStatus.innerHTML = '<span class="in-stock">✓ In Stock</span> (' + stock + ' available)';
+    } else if (stock > 0) {
+        stockStatus.innerHTML = '<span class="low-stock">⚠ Low Stock</span> (Only ' + stock + ' left!)';
+    } else {
+        stockStatus.innerHTML = '<span class="out-of-stock">✗ Out of Stock</span>';
+    }
+    
+    // Quantity and total
+    document.getElementById('modalQuantity').textContent = modalQuantity;
+    updateModalTotal();
+    
+    // Disable add to cart if out of stock
+    const addBtn = document.getElementById('modalAddToCartBtn');
+    if (stock <= 0) {
+        addBtn.disabled = true;
+        addBtn.textContent = 'Out of Stock';
+    } else {
+        addBtn.disabled = false;
+        addBtn.textContent = 'Add to Cart';
+    }
+    
+    // Show modal
+    document.getElementById('productDetailModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeProductDetail() {
+    document.getElementById('productDetailModal').style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+    selectedProduct = null;
+    modalQuantity = 1;
+}
+
+function increaseModalQuantity() {
+    if (!selectedProduct) return;
+    
+    const maxStock = parseInt(selectedProduct.stock_quantity) || 0;
+    if (modalQuantity < maxStock) {
+        modalQuantity++;
+        document.getElementById('modalQuantity').textContent = modalQuantity;
+        updateModalTotal();
+    }
+}
+
+function decreaseModalQuantity() {
+    if (modalQuantity > 1) {
+        modalQuantity--;
+        document.getElementById('modalQuantity').textContent = modalQuantity;
+        updateModalTotal();
+    }
+}
+
+function updateModalTotal() {
+    if (!selectedProduct) return;
+    
+    const total = parseFloat(selectedProduct.discounted_price) * modalQuantity;
+    document.getElementById('modalTotalPrice').textContent = '₱' + total.toFixed(2);
+}
+
+async function addToCartFromModal() {
+    if (!selectedProduct) return;
+    
+    const btn = document.getElementById('modalAddToCartBtn');
+    btn.disabled = true;
+    btn.textContent = 'Adding...';
+    
+    const result = await CartAPI.add(selectedProduct.product_id, modalQuantity);
+    
+    if (result.success) {
+        btn.textContent = '✓ Added!';
+        
+        setTimeout(() => {
+            closeProductDetail();
+            
+            // Refresh cart if on cart tab
+            if (document.getElementById('cartTab').classList.contains('active')) {
+                loadCart();
+            }
+        }, 800);
+    } else {
+        btn.disabled = false;
+        btn.textContent = 'Add to Cart';
+        alert(result.message);
     }
 }
 
@@ -430,9 +580,10 @@ function renderFavorites(favorites) {
         
         return `
         <div class="product-item ${p.is_on_sale ? 'on-sale' : ''}">
-            <div class="product-image-container">
+            <div class="product-image-container" onclick="openProductDetail(${p.product_id})">
                 <img src="${imageUrl}" alt="${p.name}" class="product-image" onerror="this.src='assets/placeholder-bread.png'">
                 ${saleTag}
+                <span class="click-hint">Tap for details</span>
             </div>
             <div class="product-details">
                 <div class="product-header">
