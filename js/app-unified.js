@@ -1,8 +1,7 @@
 /**
- * Main Application Logic
- * DoughMain - Bread Rescue Application
- * Updated with Image Support and Sale Feature
- * FIXED: Tab switching navigation
+ * Main Application Logic - UNIFIED VERSION
+ * DoughMain - Handles both Customer and Bakery login
+ * Automatically redirects to correct interface
  */
 
 let currentUser = null;
@@ -11,7 +10,7 @@ let currentFavorites = [];
 let allProducts = [];
 let selectedDeliveryOption = 'delivery';
 let selectedPaymentMethod = 'cod';
-let currentView = 'all'; // 'all' or 'sale'
+let currentView = 'all';
 
 // Initialize app on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +27,6 @@ async function init() {
             await loadAppData();
         }
     } catch (error) {
-        // User not logged in, stay on login screen
         console.log('No active session');
     }
 }
@@ -42,7 +40,7 @@ async function loadAppData() {
     await loadFavorites();
 }
 
-// Authentication Functions
+// Authentication Functions - UNIFIED LOGIN
 async function login() {
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value;
@@ -61,13 +59,25 @@ async function login() {
     enableButton('loginBtn', true);
     
     if (result.success) {
-        currentUser = result.user;
-        showMessage('loginSuccess', result.message, false);
-        
-        setTimeout(() => {
-            showScreen('appScreen');
-            loadAppData();
-        }, 1000);
+        // Check user type and redirect accordingly
+        if (result.user_type === 'bakery') {
+            // BAKERY USER - Redirect to bakery portal
+            showMessage('loginSuccess', 'Redirecting to Bakery Portal...', false);
+            setTimeout(() => {
+                window.location.href = 'bakery.html';
+            }, 1000);
+        } else if (result.user_type === 'customer') {
+            // CUSTOMER USER - Continue to customer app
+            currentUser = result.user;
+            showMessage('loginSuccess', result.message, false);
+            
+            setTimeout(() => {
+                showScreen('appScreen');
+                loadAppData();
+            }, 1000);
+        } else {
+            showMessage('loginError', 'Unknown user type', true);
+        }
     } else {
         showMessage('loginError', result.message, true);
     }
@@ -182,7 +192,6 @@ async function loadCategories() {
 function renderCategories(categories) {
     const container = document.getElementById('categoriesList');
     
-    // Add Sale category at the beginning (no emoji, cleaner look)
     let categoriesHtml = `
         <div class="category-chip ${currentView === 'sale' ? 'active sale-chip' : 'sale-chip'}" 
              onclick="showSaleProducts()">
@@ -203,13 +212,11 @@ function renderCategories(categories) {
 async function showSaleProducts() {
     currentView = 'sale';
     
-    // Update active category
     document.querySelectorAll('.category-chip').forEach(chip => {
         chip.classList.remove('active');
     });
     document.querySelector('.sale-chip').classList.add('active');
     
-    // Update section title
     document.querySelector('.section-title').textContent = 'Sale Items';
     
     await loadSaleProducts();
@@ -218,15 +225,12 @@ async function showSaleProducts() {
 function filterByCategory(categoryName) {
     currentView = 'all';
     
-    // Update active category
     document.querySelectorAll('.category-chip').forEach(chip => {
         chip.classList.toggle('active', chip.textContent.trim() === categoryName);
     });
     
-    // Update section title
     document.querySelector('.section-title').textContent = categoryName === 'All' ? 'Available Today' : categoryName + ' Bread';
     
-    // Filter products
     if (categoryName === 'All') {
         renderProducts(allProducts);
     } else {
@@ -278,13 +282,9 @@ function renderProducts(products) {
 }
 
 async function searchProducts() {
-    console.log('🔍 Search function called');
-    
     const query = document.getElementById('searchInput').value.trim();
-    console.log('📝 Search query:', query);
     
     if (query.length === 0) {
-        console.log('🔄 Query empty, showing all products');
         if (currentView === 'sale') {
             await loadSaleProducts();
         } else {
@@ -294,21 +294,13 @@ async function searchProducts() {
     }
     
     if (query.length < 2) {
-        console.log('⏳ Query too short (< 2 chars), waiting...');
         return;
     }
     
-    console.log('🌐 Calling API...');
     const result = await ProductAPI.search(query);
-    console.log('✅ API Response:', result);
     
     if (result.success) {
-        console.log('📦 Products found:', result.products.length);
-        console.log('📋 Products data:', result.products);
         renderProducts(result.products);
-        console.log('✨ Render complete');
-    } else {
-        console.log('❌ API returned success: false');
     }
 }
 
@@ -320,7 +312,6 @@ async function addToCart(productId) {
         const product = allProducts.find(p => p.product_id === productId);
         alert(`${product.name} added to cart!`);
         
-        // Reload cart if on cart tab
         if (document.getElementById('cartTab').classList.contains('active')) {
             await loadCart();
         }
@@ -477,7 +468,7 @@ async function toggleFavorite(productId) {
     
     if (result.success) {
         await loadFavorites();
-        await loadProducts(); // Refresh to update heart icons
+        await loadProducts();
     } else {
         alert(result.message);
     }
@@ -490,7 +481,6 @@ async function goToCheckout() {
         return;
     }
     
-    // Prepare checkout summary
     let itemsHtml = '';
     let subtotal = 0;
     
@@ -518,11 +508,9 @@ function selectDeliveryOption(element) {
     element.classList.add('selected');
     selectedDeliveryOption = element.dataset.value;
     
-    // Update delivery fee
     const deliveryFee = selectedDeliveryOption === 'delivery' ? 20 : 0;
     document.getElementById('deliveryFeeAmount').textContent = '₱' + deliveryFee.toFixed(2);
     
-    // Update total
     const subtotal = parseFloat(document.getElementById('checkoutSubtotal').textContent.replace('₱', ''));
     document.getElementById('checkoutTotal').textContent = '₱' + (subtotal + deliveryFee).toFixed(2);
 }
@@ -558,7 +546,6 @@ async function placeOrder() {
         showScreen('appScreen');
         navigateToTab('browse');
         
-        // Reload products to update stock
         await loadProducts();
     } else {
         alert('Failed to place order: ' + result.message);
@@ -570,7 +557,7 @@ function backToCart() {
     navigateToTab('cart');
 }
 
-// Navigation Functions
+// Navigation Functions  
 function showScreen(screenId) {
     document.querySelectorAll('.auth-screen, .app-screen, .checkout-screen').forEach(s => {
         s.classList.remove('active');
@@ -578,9 +565,18 @@ function showScreen(screenId) {
     document.getElementById(screenId).classList.add('active');
 }
 
-// FIXED: New function to handle tab switching programmatically
+// Profile section functions (if needed)
+function showProfileSection(section) {
+    // Implementation from profile.js if needed
+    console.log('Profile section:', section);
+}
+
+function backToProfile() {
+    document.querySelectorAll('.profile-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('profileTab').classList.add('active');
+}
+
 async function navigateToTab(tab) {
-    // Update nav items
     document.querySelectorAll('.nav-item').forEach(item => {
         const label = item.querySelector('.nav-label');
         if (label && label.textContent.toLowerCase() === tab.toLowerCase()) {
@@ -590,17 +586,14 @@ async function navigateToTab(tab) {
         }
     });
     
-    // Update content
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
     document.getElementById(tab + 'Tab').classList.add('active');
     
-    // Load data for specific tabs
     if (tab === 'cart') {
         await loadCart();
     } else if (tab === 'favorites') {
         await loadFavorites();
     } else if (tab === 'browse') {
-        // Reset to all products view
         if (currentView === 'sale') {
             currentView = 'all';
             document.querySelector('.section-title').textContent = 'Available Today';
@@ -609,7 +602,6 @@ async function navigateToTab(tab) {
     }
 }
 
-// FIXED: Updated switchTab for bottom navigation clicks
 async function switchTab(tab) {
     await navigateToTab(tab);
 }

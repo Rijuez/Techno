@@ -1271,7 +1271,7 @@
     </div>
 
     <script src="js/api.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app-unified.js"></script>
     <script src="js/profile.js"></script>
 </body>
 </html>
